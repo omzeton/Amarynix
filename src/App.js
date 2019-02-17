@@ -7,9 +7,9 @@ class App extends Component {
   state = {
     name: '',
     persons: [
-      {name: 'Ior', age: '1235245*10'},
-      {name: 'Doria', age: '153464545*10'},
-      {name: 'Stref', age: '534f756645*10'},
+      {id: 'fasd23', name: 'Ior', age: '1235245*10'},
+      {id: 'afsf54', name: 'Doria', age: '153464545*10'},
+      {id: 'hdfg53', name: 'Stref', age: '534f756645*10'},
     ],
     showPersons: false
   }
@@ -39,8 +39,8 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map((thing, val, index) => {
-            return <Person name={thing.name} age={thing.age} click={this.deletePersonHandler.bind(this, index)} key={val}/>
+          {this.state.persons.map((thing, index) => {
+            return <Person name={thing.name} age={thing.age} click={this.deletePersonHandler.bind(this, index)} key={thing.id}/>
           })}
         </div>
       );
@@ -59,17 +59,15 @@ export default App;
 
 // 16.02.2019
 /*
-Why does arrow function not work?
-<input type="text" onChange={() => this.nameChangeHandler()}/>
-
 Why is it splicing the wrong item from state??
 
-deletePersonHandler = (personIndex) => {
-  // const newArr = this.state.persons.slice();
-  const newArr = [...this.state.persons];
-  newArr.splice(personIndex, 1);
-  this.setState({persons: newArr})
-}
+Answer: because if you assign a key to the index attribute 
+the index changes! Every time person is given a different 
+key which is why they behave in different way.
+"So what we could do is use index, because after all index
+changes for every element in the array, right? That's right,
+but index also is part of the list itself. If the list changes,
+every element will receive a new index, at least every element after the change"
 */
 
 //17.02.2019
