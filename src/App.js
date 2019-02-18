@@ -14,10 +14,29 @@ class App extends Component {
     showPersons: false
   }
 
-  nameChangeHandler = (event) => {
-    this.setState({
-      name: event.target.value
-    })
+  nameChangeHandler = (event, idee) => {
+    // find a thing inside state that has the same id as the second argument in the function 'idee'
+    const personIndex = this.state.persons.findIndex(p => {
+      // if the 'id' from state is the same as 'idee' passed in function return it
+      return p.id === idee;
+    });
+
+    // never mutate the state, always copy. other way to do it is like this
+    // const person = Object.assign({}, this.state.persons[personIndex]);
+    const personStateCopy1 = {
+      ...this.state.persons[personIndex] // it's personIndex because it's not the entire state, only one element that is the same with idee
+    };
+
+    // Now that we have a copy of the state it's fine to assign it a new value, in this case whatever is being typed
+    personStateCopy1.name = event.target.value;
+
+    // now copy the entire state
+    const personStateCopy2 = [...this.state.persons];
+    // merge the updated state with the copy
+    personStateCopy2[personIndex] = personStateCopy1;
+
+    // push the copy to the origin of the state
+    this.setState({persons: personStateCopy2 });
   }
 
   togglePersons = () => {
@@ -40,7 +59,12 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((thing, index) => {
-            return <Person name={thing.name} age={thing.age} click={this.deletePersonHandler.bind(this, index)} key={thing.id}/>
+            return <Person 
+            name={thing.name} 
+            age={thing.age} 
+            click={this.deletePersonHandler.bind(this, index)} 
+            key={thing.id}
+            changed={(event) => this.nameChangeHandler(event, thing.id)}/>
           })}
         </div>
       );
@@ -57,7 +81,10 @@ class App extends Component {
 
 export default App;
 
-// 16.02.2019
+//17.02.2019
+
+// DYNAMIC CONTENT
+
 /*
 Why is it splicing the wrong item from state??
 
@@ -69,10 +96,6 @@ changes for every element in the array, right? That's right,
 but index also is part of the list itself. If the list changes,
 every element will receive a new index, at least every element after the change"
 */
-
-//17.02.2019
-
-// DYNAMIC CONTENT
 
 /*
 One NOT JS way to handle dynamic content
