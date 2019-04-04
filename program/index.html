@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Amharic</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+
+	<h1>Amharic conjugator</h1>
+	<h2>Infinitive</h2>
+	<br />
+	<input type="text" placeholder="Type infinitive" id="input">
+	<!-- ^^^ onkeypress="return AmharicPhoneticKeyPress(event,this);" ^^^ -->
+	<input type="submit" value="Conjugate" id="submit">
+	<br />
+	<br />
+	<p>Input:</p>
+	<br />
+	<p>- verb:: <span id="output-verb"></span>  <span id="output-class"></span></p>
+	<br />
+	<p>Output:</p>
+	<br />
+	<p>- division</p>
+	<div class="r-table">
+		<div>
+			<p>1</p>
+		</div>
+		<div>
+			<p>2</p>
+		</div>
+		<div>
+			<p>3</p>
+		</div>
+		<div>
+			<p>4</p>
+		</div>
+		<div>
+			<p></p>
+		</div>
+		<div>
+			<p id="r-1">.</p>
+		</div>
+		<div>
+			<p id="r-2">.</p>
+		</div>
+		<div>
+			<p id='r-3'>.</p>
+		</div>
+		<div>
+			<p id="r-4">.</p>
+		</div>
+		<div id="r-t">
+			<p>.</p>
+		</div>
+	</div>
+	<br />
+	<div class="output-tense-container">
+		<p>- Perfectum:: <span class="output-tense" id="output-perfectum"></span></p>
+		<p>- Jussivus:: <span class="output-tense" id="output-jussivus"></span></p>
+		<p>- Gerundivum:: <span class="output-tense" id="output-gerundivum"></span></p>
+		<p>- Contingent:: <span class="output-tense" id="output-contingent"></span></p>
+	</div>	
+
+	<script src="js/amInput.js"></script>
+	<script src="js/test.js"></script>
+</body>
+</html>

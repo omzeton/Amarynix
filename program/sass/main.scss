@@ -1,0 +1,42 @@
+$w : #f9f9f9;
+
+body {
+	background-color: $w;
+}
+
+h1 {
+	font-size: 1.5em;
+}
+
+h2 {
+	font-size: 1.2em;
+	text-decoration: underline;
+	padding-top: 0.5em;
+}
+
+.r-table {
+	position: relative;
+	display: grid;
+	width: 13em;
+	height: 5em;
+	grid-template-areas: 'l l l l l'
+						 'n n n n n';
+	background-color: #f2f2f2;
+}
+.r-table div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#output-verb {
+	font-size: 2em;
+}
+
+.output-tense-container p {
+	padding:1em 0;
+}
+
+.output-tense {
+	font-weight: bold;
+}
