@@ -11,11 +11,24 @@ const outPer = document.getElementById('output-perfectum');
 const outJus = document.getElementById('output-jussivus');
 const outGer = document.getElementById('output-gerundivum');
 const outCon = document.getElementById('output-contingent');
+const prefOutput = document.getElementById('pref');
+let prefixes = document.getElementsByName('prefix');
 let input,
 	output,
 	verbClass,
 	hasT,
-	radical3;
+	radical3,
+	pref;
+
+prefixes = Array.prototype.slice.call(prefixes);
+
+pref = prefixes.find(input => {
+	if (input.checked) {
+		return input;
+	}
+});
+
+prefOutput.innerHTML = pref.value;
 
 // let example1 = 'meselCet';
 // let example2 = 'majet';
@@ -26,6 +39,25 @@ let input,
 // let example6 = 'mehied';
 // let example7 = 'meqofer';
 // let example8 = 'matat';
+
+/* HELPER FUNCTIONS */
+/* ******** */
+
+function addPrefix(verb) {
+	let arr = [];
+	if (verb[0] == 'y' && verb[1] == 'i') {
+		arr = verb.split('');
+		arr.shift();
+		arr.shift();
+		return pref.value + arr.join('');
+	} else if (verb[0] == 'a' || verb[0] == 'y') {
+		arr = verb.split('');
+		arr.shift();
+		return pref.value + arr.join('');
+	} else {
+		return pref.value + verb;
+	}
+}
 
 /* RADICALS */
 /* ******** */
@@ -58,13 +90,13 @@ function inputToRad(newInput) {
 	newArr.shift();
 
 	// Check for vowel attached to that radical
-	switch(newArr[0]) {
+	switch (newArr[0]) {
 		case 'a':
 		case 'e':
 		case 'y':
 		case 'u':
 		case 'o':
-			if(radicals[0] == 'a') {
+			if (radicals[0] == 'a') {
 				radicals[1] += newArr[0]
 				newArr.shift();
 			} else {
@@ -73,8 +105,8 @@ function inputToRad(newInput) {
 			}
 			break;
 		case 'i':
-			if(radicals[0] == 'a') {
-				if(newArr[1] == 'e') {
+			if (radicals[0] == 'a') {
+				if (newArr[1] == 'e') {
 					radicals[1] += 'ie';
 					newArr.shift();
 					newArr.shift();
@@ -83,7 +115,7 @@ function inputToRad(newInput) {
 					newArr.shit();
 				}
 			} else {
-				if(newArr[1] == 'e') {
+				if (newArr[1] == 'e') {
 					radicals[0] += 'ie';
 					newArr.shift();
 					newArr.shift();
@@ -92,7 +124,7 @@ function inputToRad(newInput) {
 					newArr.shit();
 				}
 			}
-			break;				
+			break;
 	}
 
 	// Next letter is new radical
@@ -109,7 +141,7 @@ function inputToRad(newInput) {
 	}
 
 	// Check for vowel attached to that radical
-	switch(newArr[0]) {
+	switch (newArr[0]) {
 		case 'a':
 		case 'e':
 		case 'y':
@@ -119,8 +151,8 @@ function inputToRad(newInput) {
 			newArr.shift();
 			break;
 		case 'i':
-			if(radicals[0] == 'a') {
-				if(newArr[1] == 'e') {
+			if (radicals[0] == 'a') {
+				if (newArr[1] == 'e') {
 					radicals[0] += 'ie';
 					newArr.shift();
 					newArr.shift();
@@ -129,7 +161,7 @@ function inputToRad(newInput) {
 					newArr.shit();
 				}
 			} else {
-				if(newArr[1] == 'e') {
+				if (newArr[1] == 'e') {
 					radicals[1] += 'ie';
 					newArr.shift();
 					newArr.shift();
@@ -146,7 +178,7 @@ function inputToRad(newInput) {
 	newArr.shift();
 
 
-	switch(newArr[0]) {
+	switch (newArr[0]) {
 		case 'a':
 		case 'e':
 		case 'y':
@@ -156,8 +188,8 @@ function inputToRad(newInput) {
 			newArr.shift();
 			break;
 		case 'i':
-			if(radicals[0] == 'a') {
-				if(newArr[1] == 'e') {
+			if (radicals[0] == 'a') {
+				if (newArr[1] == 'e') {
 					radicals[0] += 'ie';
 					newArr.shift();
 					newArr.shift();
@@ -166,7 +198,7 @@ function inputToRad(newInput) {
 					newArr.shit();
 				}
 			} else {
-				if(newArr[1] == 'e') {
+				if (newArr[1] == 'e') {
 					radicals[1] += 'ie';
 					newArr.shift();
 					newArr.shift();
@@ -175,7 +207,7 @@ function inputToRad(newInput) {
 					newArr.shit();
 				}
 			}
-			break;	
+			break;
 	}
 
 	if (newArr.length !== 0) {
@@ -190,7 +222,7 @@ function inputToRad(newInput) {
 		}
 	}
 
-	if ( radicals[radicals.length - 1] == 't' ) {
+	if (radicals[radicals.length - 1] == 't') {
 		rT = true;
 		hasT = true;
 		radicals.pop();
@@ -205,42 +237,42 @@ function inputToRad(newInput) {
 		rT = 'x'
 	}
 
-	if(radicals.length == 4) {
+	if (radicals.length == 4) {
 		rad1.innerHTML = radicals[0];
 		rad2.innerHTML = radicals[1];
 		rad3.innerHTML = radicals[2];
 		rad4.innerHTML = radicals[3];
 		radT.innerHTML = rT;
 
-		if ( radicals[2] !== 'a') {
+		if (radicals[2] !== 'a') {
 			radical3 = radicals[2];
 		} else {
 			radical3 = false;
 		}
 	}
 
-	if(radicals.length == 3) {
+	if (radicals.length == 3) {
 		rad1.innerHTML = '.';
 		rad2.innerHTML = radicals[0];
 		rad3.innerHTML = radicals[1];
 		rad4.innerHTML = radicals[2];
 		radT.innerHTML = rT;
 
-		if ( radicals[1] !== 'a') {
+		if (radicals[1] !== 'a') {
 			radical3 = radicals[1];
 		} else {
 			radical3 = false;
 		}
 	}
 
-	if(radicals.length == 2) {
+	if (radicals.length == 2) {
 		rad1.innerHTML = '.';
 		rad2.innerHTML = '.';
 		rad3.innerHTML = radicals[0];
 		rad4.innerHTML = radicals[1];
 		radT.innerHTML = rT;
 
-		if ( radicals[0] !== 'a') {
+		if (radicals[0] !== 'a') {
 			radical3 = radicals[0];
 		} else {
 			radical3 = false;
@@ -266,27 +298,27 @@ function getClass(radicals) {
 	arr = arr.split('');
 	let isGeminated = false;
 
-	for ( let i = 0; i < arr.length; i++ ) {
+	for (let i = 0; i < arr.length; i++) {
 		if (arr[i] == arr[i + 1]) {
 			isGeminated = true;
 		}
 	}
 
 	if (!verbClass) {
-		if ( arr[0] !== 'a' && arr[1] == 'a' ) {
-				verbClass = 'C';
-			}
+		if (arr[0] !== 'a' && arr[1] == 'a') {
+			verbClass = 'C';
+		}
 	}
-	
 
-	if ( !verbClass ) {
-		if ( isGeminated ) {
+
+	if (!verbClass) {
+		if (isGeminated) {
 			verbClass = 'B';
 		} else {
 			verbClass = 'A';
 		}
 	}
-	
+
 
 	return verbClass;
 }
@@ -301,22 +333,22 @@ function infToPer(newInput) {
 	let newArr;
 	let thirdRad = radical3;
 
-	if(verbClass == 'hø') {
+	if (verbClass == 'hø') {
 
 		// Add 'e'
 		for (let i = 0; i < verb.length; i++) {
 			if (verb[i] !== 'a') {
 				let newArr = verb[i].split('');
-				if ( newArr[newArr.length - 1] !== 'a' && 
-					 newArr[newArr.length - 1] !== 'u' &&
-					 newArr[newArr.length - 1] !== 'e' &&
-					 newArr[newArr.length - 1] !== 'y' &&
-					 newArr[newArr.length - 1] !== 'o' &&
-					 newArr[newArr.length - 1] !== 'i' ) {
-						verb[i] += 'e';
+				if (newArr[newArr.length - 1] !== 'a' &&
+					newArr[newArr.length - 1] !== 'u' &&
+					newArr[newArr.length - 1] !== 'e' &&
+					newArr[newArr.length - 1] !== 'y' &&
+					newArr[newArr.length - 1] !== 'o' &&
+					newArr[newArr.length - 1] !== 'i') {
+					verb[i] += 'e';
 				}
 			}
-			
+
 		}
 	} else {
 		// geminate 3rd radical
@@ -327,8 +359,8 @@ function infToPer(newInput) {
 			if (thirdRad) {
 
 				let gem = thirdRad.split('');
-			
-				if ( gem[0] !== gem[1] ) {
+
+				if (gem[0] !== gem[1]) {
 					gem.unshift(gem[0]);
 				}
 
@@ -343,22 +375,24 @@ function infToPer(newInput) {
 
 					let newArr = verb[i].split('');
 
-					if ( newArr[newArr.length - 1] !== 'a' && 
-						 newArr[newArr.length - 1] !== 'u' &&
-						 newArr[newArr.length - 1] !== 'e' &&
-						 newArr[newArr.length - 1] !== 'y' &&
-						 newArr[newArr.length - 1] !== 'o' &&
-						 newArr[newArr.length - 1] !== 'i' ) {
-							verb[i] += 'e';
+					if (newArr[newArr.length - 1] !== 'a' &&
+						newArr[newArr.length - 1] !== 'u' &&
+						newArr[newArr.length - 1] !== 'e' &&
+						newArr[newArr.length - 1] !== 'y' &&
+						newArr[newArr.length - 1] !== 'o' &&
+						newArr[newArr.length - 1] !== 'i') {
+						verb[i] += 'e';
 					}
 				}
-				
+
 			}
 		}
-		
+
 	}
 
-	return verb.join('')
+	verb = addPrefix(verb.join(''));
+
+	return verb
 }
 
 /* JUSSIVUS / IMPERATIVUS */
@@ -368,16 +402,16 @@ function infToJus(newInput) {
 	let verb = newInput
 
 	// If verb is of class B or has 4 radicals reduce 3rd vowel to 0
-	if ( verbClass == 'B' || verb.length == 4 ) {
+	if (verbClass == 'B' || verb.length == 4) {
 
 		let r = verb[verb.length - 2].split('');
 
-		if ( r[r.length - 1] == 'a' ||
-			 r[r.length - 1] == 'u' ||
-			 r[r.length - 1] == 'e' ||
-			 r[r.length - 1] == 'y' ||
-			 r[r.length - 1] == 'o' ||
-			 r[r.length - 1] == 'i' ) {
+		if (r[r.length - 1] == 'a' ||
+			r[r.length - 1] == 'u' ||
+			r[r.length - 1] == 'e' ||
+			r[r.length - 1] == 'y' ||
+			r[r.length - 1] == 'o' ||
+			r[r.length - 1] == 'i') {
 
 			r.pop();
 			r.push('y');
@@ -385,17 +419,17 @@ function infToJus(newInput) {
 		} else {
 
 			r.push('y');
-		
+
 		}
 
 		r = r.join('');
 		verb[verb.length - 2] = r;
-	
+
 	}
 
 	// If verb is of class A and has initial 'a' reduce it to 0
 
-	if ( verbClass == 'A' && verb[0] == 'a' ) {
+	if (verbClass == 'A' && verb[0] == 'a') {
 
 		verb[0] = 'y';
 
@@ -403,24 +437,24 @@ function infToJus(newInput) {
 
 	// If verb is hollow switch 'o' to 'u' and 'e' to 'i' and vice versa
 
-	if ( verbClass == 'hø' ) {
+	if (verbClass == 'hø') {
 
 		let r = [];
 
-		for ( let i = 0; i < verb.length; i++ ) {
+		for (let i = 0; i < verb.length; i++) {
 
 			r = verb[i].split('');
 
-			if ( r[r.length - 1] == 'u' ) {
+			if (r[r.length - 1] == 'u') {
 				r.pop();
 				r.push('o');
-			} else if ( r[r.length - 1] == 'e' ) {
+			} else if (r[r.length - 1] == 'e') {
 				r.pop();
 				r.push('i');
-			} else if ( r[r.length - 1] == 'o' ) {
+			} else if (r[r.length - 1] == 'o') {
 				r.pop();
 				r.push('u');
-			} else if ( r[r.length - 1] == 'i' ) {
+			} else if (r[r.length - 1] == 'i') {
 				r.pop();
 				r.push('e');
 			}
@@ -433,7 +467,7 @@ function infToJus(newInput) {
 
 	// Jussive afixes
 
-	if ( verb[0] !== 'a' && verb[0] !== 'y' ) {
+	if (verb[0] !== 'a' && verb[0] !== 'y') {
 		verb.unshift('yi');
 		// chodzi o 'ይ'
 	}
@@ -441,11 +475,11 @@ function infToJus(newInput) {
 	let r = [];
 	r = verb[verb.length - 1].split('');
 
-	if ( r[r.length - 1] == 'a' ||
-		 r[r.length - 1] == 'e' ||
-		 r[r.length - 1] == 'u' ||
-		 r[r.length - 1] == 'o' ||
-		 r[r.length - 1] == 'i') {
+	if (r[r.length - 1] == 'a' ||
+		r[r.length - 1] == 'e' ||
+		r[r.length - 1] == 'u' ||
+		r[r.length - 1] == 'o' ||
+		r[r.length - 1] == 'i') {
 
 		r.pop();
 		r.push('u');
@@ -457,8 +491,9 @@ function infToJus(newInput) {
 	verb.pop();
 	verb.push(r);
 
+	verb = addPrefix(verb.join(''));
 
-	return verb.join('');
+	return verb
 }
 
 /* GERUNDIVUM */
@@ -469,7 +504,7 @@ function infToGer(newInput) {
 	let newArr;
 	let thirdRad = radical3;
 
-	if ( hasT ) {
+	if (hasT) {
 		// If 't' at the end add to sum of radicals
 		verb.push('t');
 
@@ -502,9 +537,9 @@ function infToGer(newInput) {
 		// 3rd radical = a -> y
 		if (thirdRad) {
 			newArr = thirdRad.split('');
-			if ( newArr[newArr.length - 1] == 'a' ) {
-					newArr.pop();
-					newArr.push('y');
+			if (newArr[newArr.length - 1] == 'a') {
+				newArr.pop();
+				newArr.push('y');
 			}
 		}
 		newArr = newArr.join('');
@@ -513,43 +548,43 @@ function infToGer(newInput) {
 		// 3rd radical = x -> y
 		if (thirdRad) {
 			newArr = thirdRad.split('');
-				if(newArr[newArr.length - 1] == 'a' ||
-				   newArr[newArr.length - 1] == 'y' ||
-				   newArr[newArr.length - 1] == 'u' ||
-				   newArr[newArr.length - 1] == 'o' ||
-				   newArr[newArr.length - 1] == 'i' ||
-				   newArr[newArr.length - 1] == 'e') {
-					newArr.pop();
-					newArr.push('y');
-				} else {
-					newArr.push('y');
-				}
+			if (newArr[newArr.length - 1] == 'a' ||
+				newArr[newArr.length - 1] == 'y' ||
+				newArr[newArr.length - 1] == 'u' ||
+				newArr[newArr.length - 1] == 'o' ||
+				newArr[newArr.length - 1] == 'i' ||
+				newArr[newArr.length - 1] == 'e') {
+				newArr.pop();
+				newArr.push('y');
+			} else {
+				newArr.push('y');
+			}
 		}
 		newArr = newArr.join('');
 		verb[verb.length - 2] = newArr;
 	}
 
-	if(verb.length == 3) {
+	if (verb.length == 3) {
 		// If radical has 3 radicals
-			if(verb[0] !== 'a') {
-				// All 3 rads receive 'e' in 2nd radical except those with initial a
-				let splitArr = verb[verb.length - 3].split('');
-				splitArr[1] = "e";
-				splitArr = splitArr.join('');
-				verb[verb.length - 3] = splitArr;
-			}
+		if (verb[0] !== 'a') {
+			// All 3 rads receive 'e' in 2nd radical except those with initial a
+			let splitArr = verb[verb.length - 3].split('');
+			splitArr[1] = "e";
+			splitArr = splitArr.join('');
+			verb[verb.length - 3] = splitArr;
+		}
 
-			let checkU = verb[1].split('');
+		let checkU = verb[1].split('');
 
-			if(checkU[checkU.length - 1] == 'u') {
-				// If 2nd radical has 'u' change it to 'o'
-				checkU[checkU.length - 1] = 'o';
-				checkU = checkU.join('');
-				verb[1] = checkU;
-			}
+		if (checkU[checkU.length - 1] == 'u') {
+			// If 2nd radical has 'u' change it to 'o'
+			checkU[checkU.length - 1] = 'o';
+			checkU = checkU.join('');
+			verb[1] = checkU;
+		}
 	}
 
-	if(verb[verb.length - 1] == 'a') {
+	if (verb[verb.length - 1] == 'a') {
 		// Verbs with final 'a' receive no 'e'
 		// There are exceptions
 		// !!! CHECK THIS RULE !!!
@@ -557,7 +592,9 @@ function infToGer(newInput) {
 
 	verb[verb.length - 1] += 'o';
 
-	return verb.join('')
+	verb = addPrefix(verb.join(''));
+
+	return verb
 }
 
 /* CONTINGENT */
@@ -568,15 +605,15 @@ function infToCon(newInput) {
 
 	// Reduce vowel of 3rd radical to 'y' or 0
 	let r = verb[verb.length - 2].split('');
-	if ( r[r.length - 1] == 'a' ||
-		 r[r.length - 1] == 'u' ||
-		 r[r.length - 1] == 'e' ||
-		 r[r.length - 1] == 'y' ||
-		 r[r.length - 1] == 'o' ||
-		 r[r.length - 1] == 'i') {
+	if (r[r.length - 1] == 'a' ||
+		r[r.length - 1] == 'u' ||
+		r[r.length - 1] == 'e' ||
+		r[r.length - 1] == 'y' ||
+		r[r.length - 1] == 'o' ||
+		r[r.length - 1] == 'i') {
 
 		r.pop();
-		r.push('y'); 
+		r.push('y');
 
 	} else {
 
@@ -589,20 +626,20 @@ function infToCon(newInput) {
 	r = [];
 
 	// If 2nd radical is not 'A' then give it 'e' vowel
-	if ( verb.length >= 3 && verb[verb.length - 3] !== 'a' ) {
+	if (verb.length >= 3 && verb[verb.length - 3] !== 'a') {
 		// If it's only 2 radicals it won't have 2nd radical
 
 		r = verb[verb.length - 3].split('');
 
-		if ( r[r.length - 1] == 'a' ||
-			 r[r.length - 1] == 'u' ||
-			 r[r.length - 1] == 'e' ||
-			 r[r.length - 1] == 'y' ||
-			 r[r.length - 1] == 'o' ||
-			 r[r.length - 1] == 'i') {
+		if (r[r.length - 1] == 'a' ||
+			r[r.length - 1] == 'u' ||
+			r[r.length - 1] == 'e' ||
+			r[r.length - 1] == 'y' ||
+			r[r.length - 1] == 'o' ||
+			r[r.length - 1] == 'i') {
 
 			r.pop();
-			r.push('e'); 
+			r.push('e');
 
 		} else {
 
@@ -619,7 +656,7 @@ function infToCon(newInput) {
 
 		r = verb[verb.length - 2].split('');
 
-		if ( r[0] !== r[1] ) {
+		if (r[0] !== r[1]) {
 			r.unshift(r[0]);
 		}
 
@@ -630,23 +667,23 @@ function infToCon(newInput) {
 
 	// If verb is hollow and it's a verb with 'a' reduce it to y
 
-	if ( verbClass == 'hø' && verb[0] == 'a') {
+	if (verbClass == 'hø' && verb[0] == 'a') {
 		verb[0] == 'y';
 	}
 
 	// Contingent afixes
 
-	if ( verb[0] !== 'a' && verb[0] !== 'y' ) {
+	if (verb[0] !== 'a' && verb[0] !== 'y') {
 		verb.unshift('y');
 	}
 
 	r = verb[verb.length - 1].split('');
 
-	if ( r[r.length - 1] == 'a' ||
-		 r[r.length - 1] == 'e' ||
-		 r[r.length - 1] == 'u' ||
-		 r[r.length - 1] == 'o' ||
-		 r[r.length - 1] == 'i') {
+	if (r[r.length - 1] == 'a' ||
+		r[r.length - 1] == 'e' ||
+		r[r.length - 1] == 'u' ||
+		r[r.length - 1] == 'o' ||
+		r[r.length - 1] == 'i') {
 
 		r.pop();
 		r.push('allew');
@@ -658,7 +695,9 @@ function infToCon(newInput) {
 	verb.pop();
 	verb.push(r);
 
-	return verb.join('');
+	verb = addPrefix(verb.join(''));
+
+	return verb
 }
 
 /* +++++ --- +++++ */
@@ -682,7 +721,7 @@ function conjugate(newInput) {
 	outCon.innerHTML = contingent;
 }
 
-conjugate('mefelleg');
+// conjugate('mefelleg');
 // conjugate('matat');
 // conjugate('megabez');
 // conjugate('melak');
@@ -694,6 +733,19 @@ submitBtn.addEventListener('click', () => {
 	input = inputDOM.value;
 	conjugate(input);
 });
+
+for (let i = 0; i < prefixes.length; i++) {
+	prefixes[i].addEventListener('click', () => {
+		input = inputDOM.value;
+		pref = prefixes.find(input => {
+			if (input.checked) {
+				return input;
+			}
+		});
+		prefOutput.innerHTML = pref.value;
+		conjugate(input);
+	});
+}
 
 window.addEventListener('keydown', e => {
 	if (13 == e.keyCode) {
