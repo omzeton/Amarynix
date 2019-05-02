@@ -25,5 +25,3 @@ mehied			1						1			0!
 
 *SPRAWDZIĆ ODMIANĘ "MEMULAT"
 *Pamiętać o tym, że jak są obok siebie te same spółgłoski np ወድድ to usuwa się duplikat.
-
-// Nie zapomnieć o As, A, Te, Aste itp.

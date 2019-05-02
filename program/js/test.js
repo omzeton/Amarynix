@@ -30,16 +30,6 @@ pref = prefixes.find(input => {
 
 prefOutput.innerHTML = pref.value;
 
-// let example1 = 'meselCet';
-// let example2 = 'majet';
-// let example3 = 'memulat';
-// let example4 = 'mestet';
-
-// let example5 = 'mefelleg';
-// let example6 = 'mehied';
-// let example7 = 'meqofer';
-// let example8 = 'matat';
-
 /* HELPER FUNCTIONS */
 /* ******** */
 
@@ -57,7 +47,7 @@ function addPrefix(verb) {
 	} else {
 		return pref.value + verb;
 	}
-}
+};
 
 /* RADICALS */
 /* ******** */
@@ -177,7 +167,7 @@ function inputToRad(newInput) {
 	radicals.push(newArr[0]);
 	newArr.shift();
 
-
+	// Check for vowel attached to that radical
 	switch (newArr[0]) {
 		case 'a':
 		case 'e':
@@ -210,6 +200,7 @@ function inputToRad(newInput) {
 			break;
 	}
 
+	// Check for gemination
 	if (newArr.length !== 0) {
 		radicals.push(newArr[0]);
 		newArr.shift();
@@ -222,6 +213,7 @@ function inputToRad(newInput) {
 		}
 	}
 
+	// Check for final t
 	if (radicals[radicals.length - 1] == 't') {
 		rT = true;
 		hasT = true;
@@ -231,12 +223,14 @@ function inputToRad(newInput) {
 		hasT = false;
 	}
 
+	// Update final T in the view
 	if (rT) {
 		rT = '-t'
 	} else {
 		rT = 'x'
 	}
 
+	// Case there are 4 radicals in total
 	if (radicals.length == 4) {
 		rad1.innerHTML = radicals[0];
 		rad2.innerHTML = radicals[1];
@@ -251,6 +245,7 @@ function inputToRad(newInput) {
 		}
 	}
 
+	// Case there are 3 radicals in total
 	if (radicals.length == 3) {
 		rad1.innerHTML = '.';
 		rad2.innerHTML = radicals[0];
@@ -265,6 +260,7 @@ function inputToRad(newInput) {
 		}
 	}
 
+	// Case there are 2 radicals in total
 	if (radicals.length == 2) {
 		rad1.innerHTML = '.';
 		rad2.innerHTML = '.';
@@ -721,13 +717,8 @@ function conjugate(newInput) {
 	outCon.innerHTML = contingent;
 }
 
-// conjugate('mefelleg');
-// conjugate('matat');
-// conjugate('megabez');
-// conjugate('melak');
-// conjugate('memesker');
-// conjugate('memulat');
-// conjugate('mayet');
+
+// Conjugator init
 
 submitBtn.addEventListener('click', () => {
 	input = inputDOM.value;
@@ -754,12 +745,36 @@ window.addEventListener('keydown', e => {
 	}
 });
 
+/* +++++ --- +++++ */
+
 /*
 
-嫌疑
+12 verbs to try out ( transform to inifinitum )
 
-l.631 - co znaczy 'with 'a''? Przetestować czy są takie czasowniki.
-l.569 - na pewno? a co z mehied? przecież nie będzie y - hy - dallehu, tylko hie.
--//-  - to jakiś bullshit. przecież nie może być każda zmieniona do y!
+01 - menger ( neggere ) ✔
+
+02 - mefelleg ( fellege ) ✔
+
+03 - meqret ( qerre ) [tylko perfektum: jest 'qre', powinno być 'qerre']
+
+04 - meleyyet ( leyye ) [powinno być wszędzie le... a jest czasem ly...]
+
+05 - mesmat ( semma ) [tylko perfektum: jest 'sma', powinno być 'semma']
+
+06 - melekkat ( lekka ) [pierwsza rdzenna problemy]
+
+07 - meqom ( qome ) [contingent: jest "qymallew", powinno być "qomallew"]
+
+08 - mehied ( hiede ) [contingent: hiydallew -> hiedallew]
+
+09 - mesam ( same ) ✔
+
+10 - mebarek ( barreke ) [jussivus + gerundivum pierwsza rdzenna]
+
+11 - memesker ( mesekkere ) ✔
+
+12 - mezengat ( zenegga ) [perfectum - zennega -> zenegga]
+
+33% Accuracy 02.04.2019
 
 */
