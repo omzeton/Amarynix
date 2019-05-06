@@ -720,10 +720,21 @@ function conjugate(newInput) {
 
 // Conjugator init
 
-submitBtn.addEventListener('click', () => {
-	input = inputDOM.value;
-	conjugate(input);
-});
+
+// UNCOMMENT FOR MANUAL INIT
+// submitBtn.addEventListener('click', () => {
+// 	input = inputDOM.value;
+// 	conjugate(input);
+// });
+
+// window.addEventListener('keydown', e => {
+// 	if (13 == e.keyCode) {
+// 		input = inputDOM.value;
+// 		conjugate(input);
+// 	}
+// });
+
+conjugate('meqret');
 
 for (let i = 0; i < prefixes.length; i++) {
 	prefixes[i].addEventListener('click', () => {
@@ -737,13 +748,6 @@ for (let i = 0; i < prefixes.length; i++) {
 		conjugate(input);
 	});
 }
-
-window.addEventListener('keydown', e => {
-	if (13 == e.keyCode) {
-		input = inputDOM.value;
-		conjugate(input);
-	}
-});
 
 /* +++++ --- +++++ */
 
