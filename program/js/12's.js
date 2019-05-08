@@ -60,17 +60,17 @@ Trzy rdzenie, ending -at. GEM-OFF
 r = 3
 Trzy rdzenie, w pierwszym -a. GEM-OFF
 
-Różnica między 10 a 1:
-W 1 w każdym rdzeniu jest -e
-W 10 w pierwszym zawsze jest -a
+Różnica między 10 a 2:
+10 w pierwszej rdzennej jest zawsze -a
+2 
 
 // \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/ \\
 
 
 // %%%%%%%%%%%%%%%%%%%%%%% problemy %%%%%%%%%%%%%%%%%%%%%%% \\
 
+2. Czasem w pierwszym rdzeniu pojawia się o wtedy nie doklejać 'e'
 1. czasowniki z początkowym "A" np Malet psują się - typ 9
-2. Memoker też nie działa, bo ma początkowe Mo. Typ 2. Sprawdzić cechy charakterystyczne.
 3. Prefiksy a, as, aste.
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \\
@@ -267,8 +267,11 @@ function inputToRad(newInput) {
     }
   }
 
-  // Check for final t
-  if (radicals[radicals.length - 1] == "t") {
+  // Check for final -at
+  if (
+    radicals[radicals.length - 2][radicals[1].length - 1] == "a" &&
+    radicals[radicals.length - 1] == "t"
+  ) {
     rT = true;
     hasT = true;
     radicals.pop();
@@ -333,6 +336,9 @@ function inputToRad(newInput) {
     radicals.push("t");
   }
 
+  console.log(radicals);
+  console.log(`Has -T? ${hasT}`);
+
   return radicals;
 }
 
@@ -383,8 +389,8 @@ function identifyType(rads) {
     // Type 9
   } else if (length === 3) {
     if (
-      (rads[0][rads[1].length - 1] == "e" ||
-        rads[0][rads[1].length - 1] == undefined) &&
+      // (rads[0][rads[1].length - 1] == "e" ||
+      //   rads[0][rads[1].length - 1] == undefined) &&
       (rads[1][rads[1].length - 1] == "e" ||
         rads[1][rads[1].length - 1] == undefined) &&
       (rads[2][rads[1].length - 1] == "e" ||
@@ -628,14 +634,14 @@ window.addEventListener("keydown", e => {
 });
 
 for (let i = 0; i < prefixes.length; i++) {
-	prefixes[i].addEventListener('click', () => {
-		input = inputDOM.value;
-		pref = prefixes.find(input => {
-			if (input.checked) {
-				return input;
-			}
-		});
-		prefOutput.innerHTML = pref.value;
-		conjugate(input);
-	});
+  prefixes[i].addEventListener("click", () => {
+    input = inputDOM.value;
+    pref = prefixes.find(input => {
+      if (input.checked) {
+        return input;
+      }
+    });
+    prefOutput.innerHTML = pref.value;
+    conjugate(input);
+  });
 }
