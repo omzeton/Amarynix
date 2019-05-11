@@ -93,6 +93,48 @@ const prefOutput = document.getElementById("pref");
 let prefixes = document.getElementsByName("prefix");
 let input, output, hasT, radical3, pref, verbTypeGlobal;
 
+// output grid
+// perfectum
+const perfS1 = document.getElementsByClassName('2-2')[0].firstChild;
+const perfS2M = document.getElementsByClassName('2-3')[0].firstChild;
+const perfS2F = document.getElementsByClassName('2-4')[0].firstChild;
+const perfS3M = document.getElementsByClassName('2-5')[0].firstChild;
+const perfS3F = document.getElementsByClassName('2-6')[0].firstChild;
+const perfP1 = document.getElementsByClassName('2-7')[0].firstChild;
+const perfP2 = document.getElementsByClassName('2-8')[0].firstChild;
+const perfP3 = document.getElementsByClassName('2-9')[0].firstChild;
+// jussivus
+const jusS1 = document.getElementsByClassName('3-2')[0].firstChild;
+const jusS2M = document.getElementsByClassName('3-3')[0].firstChild;
+const jusS2F = document.getElementsByClassName('3-4')[0].firstChild;
+const jusS3M = document.getElementsByClassName('3-5')[0].firstChild;
+const jusS3F = document.getElementsByClassName('3-6')[0].firstChild;
+const jusP1 = document.getElementsByClassName('3-7')[0].firstChild;
+const jusP2 = document.getElementsByClassName('3-8')[0].firstChild;
+const jusP3 = document.getElementsByClassName('3-9')[0].firstChild;
+// contingent
+const contS1 = document.getElementsByClassName('4-2')[0].firstChild;
+const contS2M = document.getElementsByClassName('4-3')[0].firstChild;
+const contS2F = document.getElementsByClassName('4-4')[0].firstChild;
+const contS3M = document.getElementsByClassName('4-5')[0].firstChild;
+const contS3F = document.getElementsByClassName('4-6')[0].firstChild;
+const contP1 = document.getElementsByClassName('4-7')[0].firstChild;
+const contP2 = document.getElementsByClassName('4-8')[0].firstChild;
+const contP3 = document.getElementsByClassName('4-9')[0].firstChild;
+// gerundivum
+const gerS2M = document.getElementsByClassName('5-3')[0].firstChild;
+const gerS2F = document.getElementsByClassName('5-4')[0].firstChild;
+const gerP2 = document.getElementsByClassName('5-8')[0].firstChild;
+// imperativus
+const impS1 = document.getElementsByClassName('6-2')[0].firstChild;
+const impS3M = document.getElementsByClassName('6-5')[0].firstChild;
+const impS3F = document.getElementsByClassName('6-6')[0].firstChild;
+const impP1 = document.getElementsByClassName('6-7')[0].firstChild;
+const impP2 = document.getElementsByClassName('6-9')[0].firstChild;
+
+/* ******** */
+
+
 prefixes = Array.prototype.slice.call(prefixes);
 
 pref = prefixes.find(input => {
@@ -110,10 +152,6 @@ function inputToRad(newInput) {
   let newArr,
     radicals = [],
     prev,
-    r1,
-    r2,
-    r3,
-    r4,
     rT;
 
   newArr = newInput.split("");
