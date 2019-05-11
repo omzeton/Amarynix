@@ -70,7 +70,6 @@ Różnica między 10 a 2:
 // %%%%%%%%%%%%%%%%%%%%%%% problemy %%%%%%%%%%%%%%%%%%%%%%% \\
 
 2. Czasem w pierwszym rdzeniu pojawia się o wtedy nie doklejać 'e'
-1. czasowniki z początkowym "A" np Malet psują się - typ 9
 3. Prefiksy a, as, aste.
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \\
@@ -130,10 +129,16 @@ function inputToRad(newInput) {
   } else {
     newArr.shift();
   }
-  // After Me/Ma next letter is a radical
-  radicals.push(newArr[0]);
-  newArr.shift();
-
+  // After Me/Ma next letter is a radical + gemination
+  if (newArr[0] === newArr[1]) {
+    radicals.push(newArr[0] + newArr[1]);
+    newArr.shift();
+    newArr.shift();
+  } else {
+    radicals.push(newArr[0]);
+    newArr.shift();
+  }
+  
   // Check for vowel attached to that radical
   switch (newArr[0]) {
     case "a":
@@ -141,37 +146,38 @@ function inputToRad(newInput) {
     case "y":
     case "u":
     case "o":
-      if (radicals[0] == "a") {
-        radicals[1] += newArr[0];
-        newArr.shift();
-      } else {
-        radicals[0] += newArr[0];
-        newArr.shift();
-      }
-      break;
+    if (radicals[0] == "a") {
+      radicals[1] += newArr[0];
+      newArr.shift();
+    } else {
+      radicals[0] += newArr[0];
+      newArr.shift();
+    }
+    break;
     case "i":
-      if (radicals[0] == "a") {
-        if (newArr[1] == "e") {
-          radicals[1] += "ie";
-          newArr.shift();
-          newArr.shift();
-        } else {
-          radicals[1] += "i";
-          newArr.shit();
-        }
+    if (radicals[0] == "a") {
+      if (newArr[1] == "e") {
+        radicals[1] += "ie";
+        newArr.shift();
+        newArr.shift();
       } else {
-        if (newArr[1] == "e") {
-          radicals[0] += "ie";
-          newArr.shift();
-          newArr.shift();
-        } else {
-          radicals[0] += "i";
-          newArr.shit();
-        }
+        radicals[1] += "i";
+        newArr.shit();
       }
-      break;
+    } else {
+      if (newArr[1] == "e") {
+        radicals[0] += "ie";
+        newArr.shift();
+        newArr.shift();
+      } else {
+        radicals[0] += "i";
+        newArr.shit();
+      }
+    }
+    break;
   }
 
+  
   // Next letter is new radical
   prev = newArr[0];
   radicals.push(newArr[0]);
@@ -269,7 +275,7 @@ function inputToRad(newInput) {
 
   // Check for final -at
   if (
-    radicals[radicals.length - 2][radicals[1].length - 1] == "a" &&
+    // radicals[radicals.length - 2][radicals[1].length - 1] == "a" &&
     radicals[radicals.length - 1] == "t"
   ) {
     rT = true;
@@ -337,7 +343,7 @@ function inputToRad(newInput) {
   }
 
   console.log(radicals);
-  console.log(`Has -T? ${hasT}`);
+  // console.log(`Has -T? ${hasT}`);
 
   return radicals;
 }
@@ -355,10 +361,10 @@ function identifyType(rads) {
 	2 = [3, 4, 5, 6, 7, 8, 9]
 	3 = [1, 2, 10, 12]
 	4 = [11]
-	*/
-
+  */
+  
   if (length === 2) {
-    if (rads[2] == "t" && rads[0] !== "a") {
+    if (hasT) {
       if (rads[1][0] == rads[1][1]) {
         if (rads[1][rads[1].length - 1] == "a") {
           return 6;
@@ -389,8 +395,8 @@ function identifyType(rads) {
     // Type 9
   } else if (length === 3) {
     if (
-      // (rads[0][rads[1].length - 1] == "e" ||
-      //   rads[0][rads[1].length - 1] == undefined) &&
+      (rads[0][rads[1].length - 1] == "e" ||
+        rads[0][rads[1].length - 1] == undefined) &&
       (rads[1][rads[1].length - 1] == "e" ||
         rads[1][rads[1].length - 1] == undefined) &&
       (rads[2][rads[1].length - 1] == "e" ||
@@ -422,17 +428,18 @@ function identifyType(rads) {
 /* ******** */
 
 function toPerfectum(input, verbType) {
-  let output;
+  let output,
+    firstVowel = input[0] === 'a' ? '' : 'e';
 
   switch (verbType) {
     case 1:
-      output = input[0] + "e" + input[1][0] + input[1] + input[2] + "e";
+      output = input[0] + firstVowel + input[1][0] + input[1] + input[2] + "e";
       break;
     case 2:
       output = input[0] + input[1] + input[2] + "e";
       break;
     case 3:
-      output = input[0] + "e" + input[1][0] + input[1];
+      output = input[0] + firstVowel + input[1][0] + input[1];
       break;
     case 4:
     case 6:
@@ -465,10 +472,13 @@ function toPerfectum(input, verbType) {
 /* ******** */
 
 function toJussivus(input, verbType) {
-  let output;
+  let output,
+  firstVowel = input[0] === 'a' ? '' : 'y';
 
   switch (verbType) {
     case 1:
+      output = input[0] + firstVowel + input[1] + input[2];
+      break;
     case 12:
       output = input[0] + input[1] + input[2];
       break;
@@ -476,7 +486,7 @@ function toJussivus(input, verbType) {
       output = input[0] + input[1][0] + input[1][1] + "y" + input[2];
       break;
     case 3:
-      output = input[0] + "y" + input[1][0];
+      output = input[0] + firstVowel + input[1][0];
       break;
     case 4:
       output = input[0][0] + "y" + input[1][0] + input[1][1];
@@ -509,11 +519,12 @@ function toJussivus(input, verbType) {
 /* ******** */
 
 function toGerundivum(input, verbType) {
-  let output;
+  let output,
+  firstVowel = input[0] === 'a' ? '' : 'e';
 
   switch (verbType) {
     case 1:
-      output = input[0] + "e" + input[1][0] + input[2] + "o";
+      output = input[0] + firstVowel + input[1][0] + input[2] + "o";
       break;
     case 2:
     case 4:
@@ -521,6 +532,8 @@ function toGerundivum(input, verbType) {
       output = input[0] + input[1][0] + input[1][1] + "y" + input[2] + "o";
       break;
     case 3:
+      output = input[0] + firstVowel + input[1][0] + input[2] + "o";
+      break;
     case 5:
       output = input[0] + "e" + input[1][0] + input[2] + "o";
       break;
@@ -549,17 +562,18 @@ function toGerundivum(input, verbType) {
 /* ******** */
 
 function toContingent(input, verbType) {
-  let output;
+  let output,
+  firstVowel = input[0] === 'a' ? '' : 'e';
 
   switch (verbType) {
     case 1:
-      output = input[0][0] + "e" + input[1][0] + input[2] + "allew";
+      output = input[0][0] + firstVowel + input[1][0] + input[2] + "allew";
       break;
     case 2:
       output = input[0] + input[1][0] + input[1][1] + "y" + input[2] + "allew";
       break;
     case 3:
-      output = input[0][0] + "e" + input[1][0] + "allew";
+      output = input[0][0] + firstVowel + input[1][0] + "allew";
       break;
     case 4:
       output = input[0][0] + input[1][0] + input[1][1] + "allew";
@@ -645,3 +659,49 @@ for (let i = 0; i < prefixes.length; i++) {
     conjugate(input);
   });
 }
+
+// 1 容易
+// conjugate('menger');
+// conjugate('mefelleg');
+// conjugate('meqret');
+// conjugate('melejjet');
+// conjugate('mesmat');
+// conjugate('melekkat');
+// conjugate('meqom');
+// conjugate('mehied');
+// conjugate('mesam');
+// conjugate('mebarek');
+// conjugate('memesker');
+// conjugate('mezengat');
+
+//2 容易
+// conjugate('melmed');
+// conjugate('mejemmer');
+// conjugate('mesTet');
+// conjugate('mebejjet');
+// conjugate('meblat');
+// conjugate('meTeTTat');
+// conjugate('mehon');
+// conjugate('meCies');
+// conjugate('meTal');
+// conjugate('memarek');
+// conjugate('mesebseb');
+// conjugate('mekendat');
+
+//3 中等 A
+conjugate("mader");
+conjugate("masseb");
+conjugate("majet");
+conjugate("mażżet");
+conjugate("mewTat"); // 5 nie ma z a
+conjugate("melekkat"); // 6 nie ma z a
+conjugate("menor"); // 7 nie ma z a
+conjugate("mezieg"); // 8 nie ma z a
+conjugate("medan"); // 9 jest ale ale to by było mal a powinno być malet
+conjugate("medaber"); // 10 nie ma z a
+conjugate("metenfes"); // 11 nie ma z a
+conjugate("medenfat"); // 12 nie ma z a
+
+//4 中等
+//5 难死了
+//6 难死了
