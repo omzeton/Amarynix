@@ -94,6 +94,7 @@ let prefixes = document.getElementsByName("prefix");
 let input, output, hasT, radical3, pref, verbTypeGlobal;
 
 // output grid
+
 // perfectum
 const perfS1 = document.getElementsByClassName('2-2')[0].firstChild;
 const perfS2M = document.getElementsByClassName('2-3')[0].firstChild;
@@ -527,10 +528,10 @@ function toJussivus(input, verbType) {
       output = input[0] + firstVowel + input[1][0];
       break;
     case 4:
-      output = input[0][0] + "y" + input[1][0] + input[1][1];
+      output = input[0][0] + firstVowel + input[1][0] + input[1][1];
       break;
     case 5:
-      output = input[0] + "y" + input[1];
+      output = input[0] + firstVowel + input[1];
       break;
     case 6:
     case 9:
@@ -582,7 +583,7 @@ function toGerundivum(input, verbType) {
       output = input[0][0] + "i" + input[1] + "o";
       break;
     case 9:
-      output = input[0][0] + "y" + input[1] + "o";
+      output = input[0][0] + firstVowel + input[1] + "o";
       break;
     case 10:
       output = input[0] + input[1][0] + input[2] + "o";
@@ -727,18 +728,18 @@ for (let i = 0; i < prefixes.length; i++) {
 // conjugate('mekendat');
 
 //3 中等 A
-conjugate("mader");
-conjugate("masseb");
-conjugate("majet");
-conjugate("mażżet");
-conjugate("mewTat"); // 5 nie ma z a
-conjugate("melekkat"); // 6 nie ma z a
-conjugate("menor"); // 7 nie ma z a
-conjugate("mezieg"); // 8 nie ma z a
-conjugate("medan"); // 9 jest ale ale to by było mal a powinno być malet
-conjugate("medaber"); // 10 nie ma z a
-conjugate("metenfes"); // 11 nie ma z a
-conjugate("medenfat"); // 12 nie ma z a
+// conjugate("mader");
+// conjugate("masseb");
+// conjugate("majet");
+// conjugate("mażżet");
+// conjugate("mewTat"); // 5 nie ma z a
+// conjugate("melekkat"); // 6 nie ma z a
+// conjugate("menor"); // 7 nie ma z a
+// conjugate("mezieg"); // 8 nie ma z a
+// conjugate("medan"); // 9 jest ale ale to by było mal a powinno być malet
+// conjugate("medaber"); // 10 nie ma z a
+// conjugate("metenfes"); // 11 nie ma z a
+// conjugate("medenfat"); // 12 nie ma z a
 
 //4 中等
 //5 难死了
