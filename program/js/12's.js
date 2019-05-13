@@ -381,8 +381,7 @@ function inputToRad(newInput) {
     radicals.push("t");
   }
 
-  console.log(radicals);
-  // console.log(`Has -T? ${hasT}`);
+  console.log(`Has -T? ${hasT}`);
 
   return radicals;
 }
@@ -401,6 +400,15 @@ function identifyType(rads) {
 	3 = [1, 2, 10, 12]
 	4 = [11]
   */
+
+  console.log(rads);
+
+  if ( rads[0] === "ge" && rads[1] === "mme" && rads[2] === "t" ) {
+    return 2;
+  }
+  if ( rads[0] === "mo" && rads[1] === "t" ) {
+    return 7;
+  }
   
   if (length === 2) {
     if (hasT) {
@@ -426,12 +434,6 @@ function identifyType(rads) {
         return 8;
       }
     }
-    // Type 4
-    // Type 5
-    // Type 6
-    // Type 7
-    // Type 8
-    // Type 9
   } else if (length === 3) {
     if (
       (rads[0][rads[1].length - 1] == "e" ||
@@ -451,15 +453,9 @@ function identifyType(rads) {
     } else {
       return 12;
     }
-
-    // Type 1
-    // Type 2
-    // Type 10
-    // Type 12
   } else if (length === 4) {
     verbTypeGlobal = 11;
     return 11;
-    // Type 11
   }
 }
 
@@ -741,6 +737,35 @@ for (let i = 0; i < prefixes.length; i++) {
 // conjugate("metenfes"); // 11 nie ma z a
 // conjugate("medenfat"); // 12 nie ma z a
 
-//4 中等
-//5 难死了
-//6 难死了
+// //4 难死了
+// // /* 没问题 */ conjugate('malef');
+// /* 2     */ conjugate('megemmet'); // 无法修改，trzeba zrobić oddzielny case na ten czasownik
+// /* 3     */ conjugate('meśśet'); // rozwala system
+// // /* 没问题 */conjugate('mażżet');
+// // /* 没问题 */conjugate('mewTat');
+// // /* 没问题 */conjugate('mesewwat'); 
+// /* 7     */ conjugate('memot'); // rozwala system bo t na końcu
+// // /* 没问题 */conjugate('meśeT');
+// /* 9     */ conjugate('meCien'); // jest z 'ie' czyli grupa 8 a jest 9
+// /* 10     */ conjugate('meqaset'); // rozwala system bo t na końcu
+// /* 11     */ conjugate('meserret'); // rozwala system bo t na końcu
+// // /* 没问题 */conjugate('mebertat');
+
+//4 难死了 整理的
+
+/* 2✓  */ conjugate('megemmet'); // 无法修改，trzeba zrobić oddzielny case na ten czasownik
+
+/* 3✗  */ conjugate('meśeśt'); // rozwala system
+// bezokolicznik to መሸሽ
+// jak to w ogóle odmieniac jak nie ma t na końcu i to typ 3???
+
+/* 7  */ conjugate('memot'); // rozwala system bo t na końcu
+
+// /* 9  */ conjugate('meCien'); // jest z 'ie' czyli grupa 8 a jest 9
+
+// /* 10 */ conjugate('meqaset'); // rozwala system bo t na końcu
+
+// /* 11 */ conjugate('meserret'); // rozwala system bo t na końcu
+
+
+// Bender i Fulas - Irregular verbs p. 67 - 69.
