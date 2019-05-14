@@ -769,3 +769,25 @@ for (let i = 0; i < prefixes.length; i++) {
 
 
 // Bender i Fulas - Irregular verbs p. 67 - 69.
+/*
+
+
+መሸሽ - rzeczywiście powinno być meśeśet, ale nie jest
+መሽናት - coś o tym, że nie wiadomo do jakiej klasy należy. nie wiem ta książka jest tak idiotycznie napisana że można wyciągnąć o czym oni piszą
+መምጣት - ma nieregularny imperativus
+መነገድ i "hnt'" - nie wiadomo, ale chyba się inaczej odmieniają. i co to ma być ten drugi czasownik? znaczy 'construst'. może sprawdzić w Kane'e. W tigrynia to ሃነጸ.
+አል
+ተወ
+ሻ
+አማረ - cztery bardzo oczywiste i nieregularne! odmienić oddzielnie.
+ነው
+አለ - alle
+ነበር - trzy które faktycznie odstają od reszty
+ኖረ
+ሆነ - z nimi też coś jest nie tak
+
+Zatem czasowniki które trzeba złapać, odmienić i nie dać przejść przez klasyfikację i inne procedury to:
+መሸሽ, መሽናት, መምጣት, መነገድ, ( "hnt'" / ሃነጸ )
+አል, ተወ, ሻ, አማረ, ነው, አለ, ነበር, ኖረ, ሆነ <- jakie bezokoliczniki od tych?
+
+*/
