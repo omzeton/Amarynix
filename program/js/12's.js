@@ -1,4 +1,6 @@
 /*
+ምእላድ - አላድ ማለት የተለቀመ፣ ልቅም ማለት ስለሆነ፣ ምእላድ ማለት የአላድ ክምችት ቦታ ማለት ነው።
+የምእላድ ክትብቁስ ከማስሊያዬ ገጠምኩ።
 
 Let's pretend that this indeed is a list of all possible forms an
 amharic verb can morf into. Here are the most important qualities...
@@ -96,45 +98,44 @@ let input, output, hasT, radical3, pref, verbTypeGlobal;
 // output grid
 
 // perfectum
-const perfS1 = document.getElementsByClassName('2-2')[0].firstChild;
-const perfS2M = document.getElementsByClassName('2-3')[0].firstChild;
-const perfS2F = document.getElementsByClassName('2-4')[0].firstChild;
-const perfS3M = document.getElementsByClassName('2-5')[0].firstChild;
-const perfS3F = document.getElementsByClassName('2-6')[0].firstChild;
-const perfP1 = document.getElementsByClassName('2-7')[0].firstChild;
-const perfP2 = document.getElementsByClassName('2-8')[0].firstChild;
-const perfP3 = document.getElementsByClassName('2-9')[0].firstChild;
+const perfS1 = document.getElementsByClassName("2-2")[0].firstChild;
+const perfS2M = document.getElementsByClassName("2-3")[0].firstChild;
+const perfS2F = document.getElementsByClassName("2-4")[0].firstChild;
+const perfS3M = document.getElementsByClassName("2-5")[0].firstChild;
+const perfS3F = document.getElementsByClassName("2-6")[0].firstChild;
+const perfP1 = document.getElementsByClassName("2-7")[0].firstChild;
+const perfP2 = document.getElementsByClassName("2-8")[0].firstChild;
+const perfP3 = document.getElementsByClassName("2-9")[0].firstChild;
 // jussivus
-const jusS1 = document.getElementsByClassName('3-2')[0].firstChild;
-const jusS2M = document.getElementsByClassName('3-3')[0].firstChild;
-const jusS2F = document.getElementsByClassName('3-4')[0].firstChild;
-const jusS3M = document.getElementsByClassName('3-5')[0].firstChild;
-const jusS3F = document.getElementsByClassName('3-6')[0].firstChild;
-const jusP1 = document.getElementsByClassName('3-7')[0].firstChild;
-const jusP2 = document.getElementsByClassName('3-8')[0].firstChild;
-const jusP3 = document.getElementsByClassName('3-9')[0].firstChild;
+const jusS1 = document.getElementsByClassName("3-2")[0].firstChild;
+const jusS2M = document.getElementsByClassName("3-3")[0].firstChild;
+const jusS2F = document.getElementsByClassName("3-4")[0].firstChild;
+const jusS3M = document.getElementsByClassName("3-5")[0].firstChild;
+const jusS3F = document.getElementsByClassName("3-6")[0].firstChild;
+const jusP1 = document.getElementsByClassName("3-7")[0].firstChild;
+const jusP2 = document.getElementsByClassName("3-8")[0].firstChild;
+const jusP3 = document.getElementsByClassName("3-9")[0].firstChild;
 // contingent
-const contS1 = document.getElementsByClassName('4-2')[0].firstChild;
-const contS2M = document.getElementsByClassName('4-3')[0].firstChild;
-const contS2F = document.getElementsByClassName('4-4')[0].firstChild;
-const contS3M = document.getElementsByClassName('4-5')[0].firstChild;
-const contS3F = document.getElementsByClassName('4-6')[0].firstChild;
-const contP1 = document.getElementsByClassName('4-7')[0].firstChild;
-const contP2 = document.getElementsByClassName('4-8')[0].firstChild;
-const contP3 = document.getElementsByClassName('4-9')[0].firstChild;
+const contS1 = document.getElementsByClassName("4-2")[0].firstChild;
+const contS2M = document.getElementsByClassName("4-3")[0].firstChild;
+const contS2F = document.getElementsByClassName("4-4")[0].firstChild;
+const contS3M = document.getElementsByClassName("4-5")[0].firstChild;
+const contS3F = document.getElementsByClassName("4-6")[0].firstChild;
+const contP1 = document.getElementsByClassName("4-7")[0].firstChild;
+const contP2 = document.getElementsByClassName("4-8")[0].firstChild;
+const contP3 = document.getElementsByClassName("4-9")[0].firstChild;
 // gerundivum
-const gerS2M = document.getElementsByClassName('5-3')[0].firstChild;
-const gerS2F = document.getElementsByClassName('5-4')[0].firstChild;
-const gerP2 = document.getElementsByClassName('5-8')[0].firstChild;
+const gerS2M = document.getElementsByClassName("5-3")[0].firstChild;
+const gerS2F = document.getElementsByClassName("5-4")[0].firstChild;
+const gerP2 = document.getElementsByClassName("5-8")[0].firstChild;
 // imperativus
-const impS1 = document.getElementsByClassName('6-2')[0].firstChild;
-const impS3M = document.getElementsByClassName('6-5')[0].firstChild;
-const impS3F = document.getElementsByClassName('6-6')[0].firstChild;
-const impP1 = document.getElementsByClassName('6-7')[0].firstChild;
-const impP2 = document.getElementsByClassName('6-9')[0].firstChild;
+const impS1 = document.getElementsByClassName("6-2")[0].firstChild;
+const impS3M = document.getElementsByClassName("6-5")[0].firstChild;
+const impS3F = document.getElementsByClassName("6-6")[0].firstChild;
+const impP1 = document.getElementsByClassName("6-7")[0].firstChild;
+const impP2 = document.getElementsByClassName("6-9")[0].firstChild;
 
 /* ******** */
-
 
 prefixes = Array.prototype.slice.call(prefixes);
 
@@ -177,7 +178,7 @@ function inputToRad(newInput) {
     radicals.push(newArr[0]);
     newArr.shift();
   }
-  
+
   // Check for vowel attached to that radical
   switch (newArr[0]) {
     case "a":
@@ -185,38 +186,37 @@ function inputToRad(newInput) {
     case "y":
     case "u":
     case "o":
-    if (radicals[0] == "a") {
-      radicals[1] += newArr[0];
-      newArr.shift();
-    } else {
-      radicals[0] += newArr[0];
-      newArr.shift();
-    }
-    break;
+      if (radicals[0] == "a") {
+        radicals[1] += newArr[0];
+        newArr.shift();
+      } else {
+        radicals[0] += newArr[0];
+        newArr.shift();
+      }
+      break;
     case "i":
-    if (radicals[0] == "a") {
-      if (newArr[1] == "e") {
-        radicals[1] += "ie";
-        newArr.shift();
-        newArr.shift();
+      if (radicals[0] == "a") {
+        if (newArr[1] == "e") {
+          radicals[1] += "ie";
+          newArr.shift();
+          newArr.shift();
+        } else {
+          radicals[1] += "i";
+          newArr.shit();
+        }
       } else {
-        radicals[1] += "i";
-        newArr.shit();
+        if (newArr[1] == "e") {
+          radicals[0] += "ie";
+          newArr.shift();
+          newArr.shift();
+        } else {
+          radicals[0] += "i";
+          newArr.shit();
+        }
       }
-    } else {
-      if (newArr[1] == "e") {
-        radicals[0] += "ie";
-        newArr.shift();
-        newArr.shift();
-      } else {
-        radicals[0] += "i";
-        newArr.shit();
-      }
-    }
-    break;
+      break;
   }
 
-  
   // Next letter is new radical
   prev = newArr[0];
   radicals.push(newArr[0]);
@@ -381,8 +381,6 @@ function inputToRad(newInput) {
     radicals.push("t");
   }
 
-  console.log(`Has -T? ${hasT}`);
-
   return radicals;
 }
 
@@ -390,9 +388,7 @@ function inputToRad(newInput) {
 /* ******** */
 
 function identifyType(rads) {
-  let type = null,
-    vowel,
-    length = hasT ? rads.length - 1 : rads.length;
+  let length = hasT ? rads.length - 1 : rads.length;
 
   /*
 	Radical numbers and types
@@ -403,13 +399,29 @@ function identifyType(rads) {
 
   console.log(rads);
 
-  if ( rads[0] === "ge" && rads[1] === "mme" && rads[2] === "t" ) {
-    return 2;
+  switch (rads.join("")) {
+    case "gemmet":
+      return 2;
+    case "mot":
+      return 7;
+    case "ebber":
+      return "nebber";
+    case "ew":
+      return "new";
+    case "amar":
+      return "mamar";
+    case "śat":
+      return "meśat";
+    case "tew":
+      return "metew";
+    case "nged":
+      return "menged";
+    case "mTat":
+      return "memTat";
+    case "śenat":
+      return "meśenat";
   }
-  if ( rads[0] === "mo" && rads[1] === "t" ) {
-    return 7;
-  }
-  
+
   if (length === 2) {
     if (hasT) {
       if (rads[1][0] == rads[1][1]) {
@@ -464,7 +476,7 @@ function identifyType(rads) {
 
 function toPerfectum(input, verbType) {
   let output,
-    firstVowel = input[0] === 'a' ? '' : 'e';
+    firstVowel = input[0] === "a" ? "" : "e";
 
   switch (verbType) {
     case 1:
@@ -498,6 +510,30 @@ function toPerfectum(input, verbType) {
     case 12:
       output = input[0] + input[1] + "e" + input[2][0] + input[2];
       break;
+    case "nebber":
+      output = "nebber";
+      break;
+    case "new":
+      output = "new";
+      break;
+    case "amar":
+      output = "amar";
+      break;
+    case "meśat":
+      output = "meśat";
+      break;
+    case "metew":
+      output = "metew";
+      break;
+    case "menged":
+      output = "menged";
+      break;
+    case "memTat":
+      output = "memTat";
+      break;
+    case "meśenat":
+      output = "meśenat";
+      break;
   }
 
   return output;
@@ -508,7 +544,7 @@ function toPerfectum(input, verbType) {
 
 function toJussivus(input, verbType) {
   let output,
-  firstVowel = input[0] === 'a' ? '' : 'y';
+    firstVowel = input[0] === "a" ? "" : "y";
 
   switch (verbType) {
     case 1:
@@ -545,6 +581,30 @@ function toJussivus(input, verbType) {
     case 11:
       output = input[0] + input[1] + input[2][0] + "y" + input[3];
       break;
+    case "nebber":
+      output = "nebber";
+      break;
+    case "new":
+      output = "new";
+      break;
+    case "amar":
+      output = "amar";
+      break;
+    case "meśat":
+      output = "meśat";
+      break;
+    case "metew":
+      output = "metew";
+      break;
+    case "menged":
+      output = "menged";
+      break;
+    case "memTat":
+      output = "memTat";
+      break;
+    case "meśenat":
+      output = "meśenat";
+      break;
   }
 
   return output;
@@ -555,7 +615,7 @@ function toJussivus(input, verbType) {
 
 function toGerundivum(input, verbType) {
   let output,
-  firstVowel = input[0] === 'a' ? '' : 'e';
+    firstVowel = input[0] === "a" ? "" : "e";
 
   switch (verbType) {
     case 1:
@@ -588,6 +648,30 @@ function toGerundivum(input, verbType) {
     case 12:
       output = input[0] + input[1] + input[2][0] + "y" + input[3] + "o";
       break;
+    case "nebber":
+      output = "nebber";
+      break;
+    case "new":
+      output = "new";
+      break;
+    case "amar":
+      output = "amar";
+      break;
+    case "meśat":
+      output = "meśat";
+      break;
+    case "metew":
+      output = "metew";
+      break;
+    case "menged":
+      output = "menged";
+      break;
+    case "memTat":
+      output = "memTat";
+      break;
+    case "meśenat":
+      output = "meśenat";
+      break;
   }
 
   return output;
@@ -598,7 +682,7 @@ function toGerundivum(input, verbType) {
 
 function toContingent(input, verbType) {
   let output,
-  firstVowel = input[0] === 'a' ? '' : 'e';
+    firstVowel = input[0] === "a" ? "" : "e";
 
   switch (verbType) {
     case 1:
@@ -646,6 +730,30 @@ function toContingent(input, verbType) {
     case 12:
       output = input[0] + input[1][0] + "e" + input[2][0] + input[2] + "llew";
       break;
+    case "nebber":
+      output = "nebber";
+      break;
+    case "new":
+      output = "new";
+      break;
+    case "amar":
+      output = "amar";
+      break;
+    case "meśat":
+      output = "meśat";
+      break;
+    case "metew":
+      output = "metew";
+      break;
+    case "menged":
+      output = "menged";
+      break;
+    case "memTat":
+      output = "memTat";
+      break;
+    case "meśenat":
+      output = "meśenat";
+      break;
   }
 
   return output;
@@ -657,7 +765,6 @@ function conjugate(newInput) {
   outputVerb.innerHTML = newInput;
   let inputRads = inputToRad(newInput);
   let type = identifyType(inputRads);
-  console.log(type);
 
   let perfectum = toPerfectum(inputRads, type);
   let jussivus = toJussivus(inputRads, type);
@@ -695,85 +802,12 @@ for (let i = 0; i < prefixes.length; i++) {
   });
 }
 
-// 1 容易
-// conjugate('menger');
-// conjugate('mefelleg');
-// conjugate('meqret');
-// conjugate('melejjet');
-// conjugate('mesmat');
-// conjugate('melekkat');
-// conjugate('meqom');
-// conjugate('mehied');
-// conjugate('mesam');
-// conjugate('mebarek');
-// conjugate('memesker');
-// conjugate('mezengat');
+conjugate("nebber");
 
-//2 容易
-// conjugate('melmed');
-// conjugate('mejemmer');
-// conjugate('mesTet');
-// conjugate('mebejjet');
-// conjugate('meblat');
-// conjugate('meTeTTat');
-// conjugate('mehon');
-// conjugate('meCies');
-// conjugate('meTal');
-// conjugate('memarek');
-// conjugate('mesebseb');
-// conjugate('mekendat');
-
-//3 中等 A
-// conjugate("mader");
-// conjugate("masseb");
-// conjugate("majet");
-// conjugate("mażżet");
-// conjugate("mewTat"); // 5 nie ma z a
-// conjugate("melekkat"); // 6 nie ma z a
-// conjugate("menor"); // 7 nie ma z a
-// conjugate("mezieg"); // 8 nie ma z a
-// conjugate("medan"); // 9 jest ale ale to by było mal a powinno być malet
-// conjugate("medaber"); // 10 nie ma z a
-// conjugate("metenfes"); // 11 nie ma z a
-// conjugate("medenfat"); // 12 nie ma z a
-
-// //4 难死了
-// // /* 没问题 */ conjugate('malef');
-// /* 2     */ conjugate('megemmet'); // 无法修改，trzeba zrobić oddzielny case na ten czasownik
-// /* 3     */ conjugate('meśśet'); // rozwala system
-// // /* 没问题 */conjugate('mażżet');
-// // /* 没问题 */conjugate('mewTat');
-// // /* 没问题 */conjugate('mesewwat'); 
-// /* 7     */ conjugate('memot'); // rozwala system bo t na końcu
-// // /* 没问题 */conjugate('meśeT');
-// /* 9     */ conjugate('meCien'); // jest z 'ie' czyli grupa 8 a jest 9
-// /* 10     */ conjugate('meqaset'); // rozwala system bo t na końcu
-// /* 11     */ conjugate('meserret'); // rozwala system bo t na końcu
-// // /* 没问题 */conjugate('mebertat');
-
-//4 难死了 整理的
-
-/* 2✓  */ conjugate('megemmet'); // 无法修改，trzeba zrobić oddzielny case na ten czasownik
-
-/* 3✗  */ conjugate('meśeśt'); // rozwala system
-// bezokolicznik to መሸሽ
-// jak to w ogóle odmieniac jak nie ma t na końcu i to typ 3???
-
-/* 7  */ conjugate('memot'); // rozwala system bo t na końcu
-
-// /* 9  */ conjugate('meCien'); // jest z 'ie' czyli grupa 8 a jest 9
-
-// /* 10 */ conjugate('meqaset'); // rozwala system bo t na końcu
-
-// /* 11 */ conjugate('meserret'); // rozwala system bo t na końcu
-
-
-// Bender i Fulas - Irregular verbs p. 67 - 69.
 /*
 
-
 መሸሽ - rzeczywiście powinno być meśeśet, ale nie jest
-መሽናት - coś o tym, że nie wiadomo do jakiej klasy należy. nie wiem ta książka jest tak idiotycznie napisana że można wyciągnąć o czym oni piszą
+መሽናት - coś o tym, że nie wiadomo do jakiej klasy należy. nie wiem ta książka jest tak idiotycznie napisana że nic nie można z niej wyciągnąć
 መምጣት - ma nieregularny imperativus
 መነገድ i "hnt'" - nie wiadomo, ale chyba się inaczej odmieniają. i co to ma być ten drugi czasownik? znaczy 'construst'. może sprawdzić w Kane'e. W tigrynia to ሃነጸ.
 አል
@@ -789,5 +823,71 @@ for (let i = 0; i < prefixes.length; i++) {
 Zatem czasowniki które trzeba złapać, odmienić i nie dać przejść przez klasyfikację i inne procedury to:
 መሸሽ, መሽናት, መምጣት, መነገድ, ( "hnt'" / ሃነጸ )
 አል, ተወ, ሻ, አማረ, ነው, አለ, ነበር, ኖረ, ሆነ <- jakie bezokoliczniki od tych?
+
+meśeś
+p: śeśśe
+j: śyś
+g: śeśto
+c: jyśeś
+
+meśenat
+p:
+j:
+g:
+c:
+
+memTat
+p: meTTa
+j: mTa
+g: meTyto
+c: jymeTa
+
+menged
+p:
+j:
+g:
+c:
+
+???
+p:
+j:
+g:
+c:
+
+meal
+p:
+j:
+g:
+c:
+
+metew
+p: tewe
+j: tyw
+g: tywo
+c: jytew
+
+meśat
+p:
+j:
+g:
+c:
+
+mamar
+p:
+j:
+g:
+c:
+
+new
+p:
+j:
+g:
+c:
+
+nebber
+p:
+j:
+g:
+c:
 
 */

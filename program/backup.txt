@@ -1,0 +1,72 @@
+
+ 1 容易
+ conjugate('menger');
+ conjugate('mefelleg');
+ conjugate('meqret');
+ conjugate('melejjet');
+ conjugate('mesmat');
+ conjugate('melekkat');
+ conjugate('meqom');
+ conjugate('mehied');
+ conjugate('mesam');
+ conjugate('mebarek');
+ conjugate('memesker');
+ conjugate('mezengat');
+
+2 容易
+ conjugate('melmed');
+ conjugate('mejemmer');
+ conjugate('mesTet');
+ conjugate('mebejjet');
+ conjugate('meblat');
+ conjugate('meTeTTat');
+ conjugate('mehon');
+ conjugate('meCies');
+ conjugate('meTal');
+ conjugate('memarek');
+ conjugate('mesebseb');
+ conjugate('mekendat');
+
+3 中等 A
+ conjugate("mader");
+ conjugate("masseb");
+ conjugate("majet");
+ conjugate("mażżet");
+ conjugate("mewTat");  5 nie ma z a
+ conjugate("melekkat");  6 nie ma z a
+ conjugate("menor");  7 nie ma z a
+ conjugate("mezieg");  8 nie ma z a
+ conjugate("medan");  9 jest ale ale to by było mal a powinno być malet
+ conjugate("medaber");  10 nie ma z a
+ conjugate("metenfes");  11 nie ma z a
+ conjugate("medenfat");  12 nie ma z a
+
+ 4 难死了
+ 没问题  conjugate('malef');
+ 2      conjugate('megemmet');  无法修改，trzeba zrobić oddzielny case na ten czasownik
+ 3      conjugate('meśśet');  rozwala system
+ 没问题 conjugate('mażżet');
+ 没问题 conjugate('mewTat');
+ 没问题 conjugate('mesewwat'); 
+ 7      conjugate('memot');  rozwala system bo t na końcu
+ 没问题 conjugate('meśeT');
+ 9      conjugate('meCien');  jest z 'ie' czyli grupa 8 a jest 9
+ 10      conjugate('meqaset');  rozwala system bo t na końcu
+ 11      conjugate('meserret');  rozwala system bo t na końcu
+ 没问题 conjugate('mebertat');
+
+4 难死了 整理的
+ 2✓   conjugate('megemmet');  无法修改，trzeba zrobić oddzielny case na ten czasownik
+ 3✗   conjugate('meśeśt');  rozwala system
+ bezokolicznik to መሸሽ
+ jak to w ogóle odmieniac jak nie ma t na końcu i to typ 3???
+ 7   conjugate('memot');  rozwala system bo t na końcu
+
+ 9   conjugate('meCien');  jest z 'ie' czyli grupa 8 a jest 9
+
+ 10  conjugate('meqaset');  rozwala system bo t na końcu
+
+ 11  conjugate('meserret');  rozwala system bo t na końcu
+
+
+ Bender i Fulas - Irregular verbs p. 67 - 69.
