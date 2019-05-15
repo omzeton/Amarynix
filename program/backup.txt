@@ -1,3 +1,84 @@
+/*
+ምእላድ - አላድ ማለት የተለቀመ፣ ልቅም ማለት ስለሆነ፣ ምእላድ ማለት የአላድ ክምችት ቦታ ማለት ነው።
+የምእላድ ክትብቁስ ከማስሊያዬ ገጠምኩ።
+
+Let's pretend that this indeed is a list of all possible forms an
+amharic verb can morf into. Here are the most important qualities...
+
+// \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/ \\
+
+1. me- nger
+r = 3
+Nothing weird. GEM-OFF
+
+2. me- felleg
+r = 3
+Nothing weird. GEM-ON
+
+3. me- qret
+r = 2
+Ending t. GEM-OFF
+
+4. me- leyyet
+r = 2
+Ending t. GEM-ON
+
+5. me- smat
+r = 2
+Ending at. GEM-OFF
+
+6. me- lekkat
+r = 2
+Ending at. GEM-ON
+
+7. me- qom
+r = 2
+Dwa rdzenie, w pierwszym -o. GEM-OFF
+
+8. me- hied
+r = 2
+Dwa rdzenie, w pierwszym -ie. GEM-OFF
+
+9. me- sam
+r = 2
+Dwa rdzenie, w pierwszym -a. GEM-OFF [może być też samo 'a', np w 'ale']
+
+10. me- barek
+r = 3
+Trzy rdzenie, w pierwszym -a. GEM-OFF
+
+11. me- mesker
+r = 4
+Cztery rdzenie. GEM-OFF
+
+12. me- zengat
+r = 3
+Trzy rdzenie, ending -at. GEM-OFF
+
+// ^^^^^^^^^^^^^^^^^^^^^^^ jasne ^^^^^^^^^^^^^^^^^^^^^^^ \\
+// \/\/\/\/\/\/\/\/\/\/\/\/ niejasne \/\/\/\/\/\/\/\/\/ \\
+
+10. me- barek
+r = 3
+Trzy rdzenie, w pierwszym -a. GEM-OFF
+
+Różnica między 10 a 2:
+10 w pierwszej rdzennej jest zawsze -a
+2 
+
+// \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/ \\
+
+
+// %%%%%%%%%%%%%%%%%%%%%%% problemy %%%%%%%%%%%%%%%%%%%%%%% \\
+
+2. Czasem w pierwszym rdzeniu pojawia się o wtedy nie doklejać 'e'
+3. Prefiksy a, as, aste.
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \\
+
+*/
+
+
 
  1 容易
  conjugate('menger');

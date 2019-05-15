@@ -1,97 +1,11 @@
-/*
-ምእላድ - አላድ ማለት የተለቀመ፣ ልቅም ማለት ስለሆነ፣ ምእላድ ማለት የአላድ ክምችት ቦታ ማለት ነው።
-የምእላድ ክትብቁስ ከማስሊያዬ ገጠምኩ።
-
-Let's pretend that this indeed is a list of all possible forms an
-amharic verb can morf into. Here are the most important qualities...
-
-// \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/ \\
-
-1. me- nger
-r = 3
-Nothing weird. GEM-OFF
-
-2. me- felleg
-r = 3
-Nothing weird. GEM-ON
-
-3. me- qret
-r = 2
-Ending t. GEM-OFF
-
-4. me- leyyet
-r = 2
-Ending t. GEM-ON
-
-5. me- smat
-r = 2
-Ending at. GEM-OFF
-
-6. me- lekkat
-r = 2
-Ending at. GEM-ON
-
-7. me- qom
-r = 2
-Dwa rdzenie, w pierwszym -o. GEM-OFF
-
-8. me- hied
-r = 2
-Dwa rdzenie, w pierwszym -ie. GEM-OFF
-
-9. me- sam
-r = 2
-Dwa rdzenie, w pierwszym -a. GEM-OFF [może być też samo 'a', np w 'ale']
-
-10. me- barek
-r = 3
-Trzy rdzenie, w pierwszym -a. GEM-OFF
-
-11. me- mesker
-r = 4
-Cztery rdzenie. GEM-OFF
-
-12. me- zengat
-r = 3
-Trzy rdzenie, ending -at. GEM-OFF
-
-// ^^^^^^^^^^^^^^^^^^^^^^^ jasne ^^^^^^^^^^^^^^^^^^^^^^^ \\
-// \/\/\/\/\/\/\/\/\/\/\/\/ niejasne \/\/\/\/\/\/\/\/\/ \\
-
-10. me- barek
-r = 3
-Trzy rdzenie, w pierwszym -a. GEM-OFF
-
-Różnica między 10 a 2:
-10 w pierwszej rdzennej jest zawsze -a
-2 
-
-// \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/ \\
-
-
-// %%%%%%%%%%%%%%%%%%%%%%% problemy %%%%%%%%%%%%%%%%%%%%%%% \\
-
-2. Czasem w pierwszym rdzeniu pojawia się o wtedy nie doklejać 'e'
-3. Prefiksy a, as, aste.
-
-// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \\
-
-*/
-
 const inputDOM = document.getElementById("input");
 const submitBtn = document.getElementById("submit");
 const outputVerb = document.getElementById("output-verb");
 const outputClass = document.getElementById("output-class");
-const rad1 = document.getElementById("r-1");
-const rad2 = document.getElementById("r-2");
-const rad3 = document.getElementById("r-3");
-const rad4 = document.getElementById("r-4");
-const radT = document.getElementById("r-t");
 const outPer = document.getElementById("output-perfectum");
 const outJus = document.getElementById("output-jussivus");
 const outGer = document.getElementById("output-gerundivum");
 const outCon = document.getElementById("output-contingent");
-const prefOutput = document.getElementById("pref");
 let prefixes = document.getElementsByName("prefix");
 let input, output, hasT, radical3, pref, verbTypeGlobal;
 
@@ -106,15 +20,15 @@ const perfS3F = document.getElementsByClassName("2-6")[0].firstChild;
 const perfP1 = document.getElementsByClassName("2-7")[0].firstChild;
 const perfP2 = document.getElementsByClassName("2-8")[0].firstChild;
 const perfP3 = document.getElementsByClassName("2-9")[0].firstChild;
-// jussivus
-const jusS1 = document.getElementsByClassName("3-2")[0].firstChild;
-const jusS2M = document.getElementsByClassName("3-3")[0].firstChild;
-const jusS2F = document.getElementsByClassName("3-4")[0].firstChild;
-const jusS3M = document.getElementsByClassName("3-5")[0].firstChild;
-const jusS3F = document.getElementsByClassName("3-6")[0].firstChild;
-const jusP1 = document.getElementsByClassName("3-7")[0].firstChild;
-const jusP2 = document.getElementsByClassName("3-8")[0].firstChild;
-const jusP3 = document.getElementsByClassName("3-9")[0].firstChild;
+// gerundivum
+const gerS1 = document.getElementsByClassName("3-2")[0].firstChild;
+const gerS2M = document.getElementsByClassName("3-3")[0].firstChild;
+const gerS2F = document.getElementsByClassName("3-4")[0].firstChild;
+const gerS3M = document.getElementsByClassName("3-5")[0].firstChild;
+const gerS3F = document.getElementsByClassName("3-6")[0].firstChild;
+const gerP1 = document.getElementsByClassName("3-7")[0].firstChild;
+const gerP2 = document.getElementsByClassName("3-8")[0].firstChild;
+const gerP3 = document.getElementsByClassName("3-9")[0].firstChild;
 // contingent
 const contS1 = document.getElementsByClassName("4-2")[0].firstChild;
 const contS2M = document.getElementsByClassName("4-3")[0].firstChild;
@@ -124,16 +38,16 @@ const contS3F = document.getElementsByClassName("4-6")[0].firstChild;
 const contP1 = document.getElementsByClassName("4-7")[0].firstChild;
 const contP2 = document.getElementsByClassName("4-8")[0].firstChild;
 const contP3 = document.getElementsByClassName("4-9")[0].firstChild;
-// gerundivum
-const gerS2M = document.getElementsByClassName("5-3")[0].firstChild;
-const gerS2F = document.getElementsByClassName("5-4")[0].firstChild;
-const gerP2 = document.getElementsByClassName("5-8")[0].firstChild;
 // imperativus
-const impS1 = document.getElementsByClassName("6-2")[0].firstChild;
-const impS3M = document.getElementsByClassName("6-5")[0].firstChild;
-const impS3F = document.getElementsByClassName("6-6")[0].firstChild;
-const impP1 = document.getElementsByClassName("6-7")[0].firstChild;
-const impP2 = document.getElementsByClassName("6-9")[0].firstChild;
+const impS2M = document.getElementsByClassName("5-3")[0].firstChild;
+const impS2F = document.getElementsByClassName("5-4")[0].firstChild;
+const impP2 = document.getElementsByClassName("5-8")[0].firstChild;
+// jussivus
+const jusS1 = document.getElementsByClassName("6-2")[0].firstChild;
+const jusS3M = document.getElementsByClassName("6-5")[0].firstChild;
+const jusS3F = document.getElementsByClassName("6-6")[0].firstChild;
+const jusP1 = document.getElementsByClassName("6-7")[0].firstChild;
+const jusP2 = document.getElementsByClassName("6-9")[0].firstChild;
 
 /* ******** */
 
@@ -144,8 +58,6 @@ pref = prefixes.find(input => {
     return input;
   }
 });
-
-prefOutput.innerHTML = pref.value;
 
 /* RADICALS */
 /* ******** */
@@ -323,58 +235,6 @@ function inputToRad(newInput) {
   } else {
     rT = false;
     hasT = false;
-  }
-
-  // Update final T in the view
-  if (rT) {
-    rT = "-t";
-  } else {
-    rT = "x";
-  }
-
-  // Case there are 4 radicals in total
-  if (radicals.length == 4) {
-    rad1.innerHTML = radicals[0];
-    rad2.innerHTML = radicals[1];
-    rad3.innerHTML = radicals[2];
-    rad4.innerHTML = radicals[3];
-    radT.innerHTML = rT;
-
-    if (radicals[2] !== "a") {
-      radical3 = radicals[2];
-    } else {
-      radical3 = false;
-    }
-  }
-
-  // Case there are 3 radicals in total
-  if (radicals.length == 3) {
-    rad1.innerHTML = ".";
-    rad2.innerHTML = radicals[0];
-    rad3.innerHTML = radicals[1];
-    rad4.innerHTML = radicals[2];
-    radT.innerHTML = rT;
-
-    if (radicals[1] !== "a") {
-      radical3 = radicals[1];
-    } else {
-      radical3 = false;
-    }
-  }
-
-  // Case there are 2 radicals in total
-  if (radicals.length == 2) {
-    rad1.innerHTML = ".";
-    rad2.innerHTML = ".";
-    rad3.innerHTML = radicals[0];
-    rad4.innerHTML = radicals[1];
-    radT.innerHTML = rT;
-
-    if (radicals[0] !== "a") {
-      radical3 = radicals[0];
-    } else {
-      radical3 = false;
-    }
   }
 
   if (hasT) {
@@ -759,6 +619,73 @@ function toContingent(input, verbType) {
   return output;
 }
 
+/* FULL CONJUGATION */
+/* ******** */
+
+function conjugateAllPersons(p, j, g, c) {
+  // Remember the output was already converted to 3rd person singular!
+
+  let P = p,
+    G = g,
+    J = j,
+    C = c;
+
+  if (P[P.length - 1] !== "a") {
+    P = P.split("");
+    P.pop();
+    P = P.join("");
+  }
+
+  G = G.split("");
+  G.pop();
+  G = G.join("");
+
+  C = C.split("allew")[0];
+
+  console.log(p);
+  console.log(j);
+  console.log(g);
+  console.log(c);
+
+  // Perfectum
+  perfS1.innerHTML = P + "hu";
+  perfS2M.innerHTML = P + "h";
+  perfS2F.innerHTML = P + "ś";
+  perfS3M.innerHTML = P + "e";
+  perfS3F.innerHTML = P + "eć";
+  perfP1.innerHTML = P + "n";
+  perfP2.innerHTML = P + "aćhu";
+  perfP3.innerHTML = P + "u";
+  // Gerundivum
+  gerS1.innerHTML = G + "ie";
+  gerS2M.innerHTML = G + "eh";
+  gerS2F.innerHTML = G + "eś";
+  gerS3M.innerHTML = G + "o";
+  gerS3F.innerHTML = G + "a";
+  gerP1.innerHTML = G + "en";
+  gerP2.innerHTML = G + "aćhu";
+  gerP3.innerHTML = G + "ew";
+  // Contingent
+  contS1.innerHTML = "y" + C + "allew";
+  contS2M.innerHTML = "ty" + C + "alleh";
+  contS2F.innerHTML = "ty" + C + "yalleś";
+  contS3M.innerHTML = "jy" + C + "al";
+  contS3F.innerHTML = "ty" + C + "alleć";
+  contP1.innerHTML = "ynny" + C + "allen";
+  contP2.innerHTML = "ty" + C + "alaćhu";
+  contP3.innerHTML = "jy" + C + "allu";
+  // Imperativus
+  impS2M.innerHTML = J;
+  impS2F.innerHTML = J + "i"; // Jak na końcu jest "a" np w melekkat - lekka, to powinno być w imp lekki?
+  impP2.innerHTML = J + "u"; // A tu lekku? czy lekka i lekka?
+  // Jussivus
+  jusS1.innerHTML = "jy" + J;
+  jusS3M.innerHTML = "ty" + J;
+  jusS3F.innerHTML = "ly" + J;
+  jusP1.innerHTML = "jy" + J + "u";
+  jusP2.innerHTML = "ynny" + J;
+}
+
 /* +++++ --- +++++ */
 
 function conjugate(newInput) {
@@ -770,6 +697,8 @@ function conjugate(newInput) {
   let jussivus = toJussivus(inputRads, type);
   let gerundivum = toGerundivum(inputRads, type);
   let contingent = toContingent(inputRads, type);
+
+  conjugateAllPersons(perfectum, jussivus, gerundivum, contingent);
 
   outPer.innerHTML = perfectum;
   outJus.innerHTML = jussivus;
@@ -797,12 +726,11 @@ for (let i = 0; i < prefixes.length; i++) {
         return input;
       }
     });
-    prefOutput.innerHTML = pref.value;
     conjugate(input);
   });
 }
 
-conjugate("nebber");
+conjugate("melekkat");
 
 /*
 

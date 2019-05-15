@@ -34,11 +34,13 @@ h2 {
 
 .output-full-conjugation {
   display: grid;
-  grid-template-columns: repeat(6, 6rem);
+  grid-template-columns: repeat(6, auto);
   grid-template-rows: repeat(9, 3rem);
-  margin: 1em 0em; }
+  margin: 1em 2em; }
   .output-full-conjugation > div {
     border: 1px solid #000;
     padding: 0.3em; }
+    .output-full-conjugation > div:nth-child(odd) {
+      background-color: #dddddd; }
     .output-full-conjugation > div p {
       margin-top: 0.7em; }
