@@ -264,20 +264,18 @@ function identifyType(rads) {
       return 2;
     case "mot":
       return 7;
-    case "ebber":
-      return "nebber";
-    case "ew":
-      return "new";
     case "amar":
       return "mamar";
     case "śat":
       return "meśat";
     case "tew":
       return "metew";
-    case "nged":
-      return "menged";
     case "mTat":
-      return "memTat";
+      verbTypeGlobal = 'memTat';
+      return 5;
+    case 'alet':
+      verbTypeGlobal = 'malet';
+      return 3;
     case "śenat":
       return "meśenat";
   }
@@ -326,7 +324,6 @@ function identifyType(rads) {
       return 12;
     }
   } else if (length === 4) {
-    verbTypeGlobal = 11;
     return 11;
   }
 }
@@ -337,6 +334,8 @@ function identifyType(rads) {
 function toPerfectum(input, verbType) {
   let output,
     firstVowel = input[0] === "a" ? "" : "e";
+
+  console.log(verbType);
 
   switch (verbType) {
     case 1:
@@ -369,30 +368,6 @@ function toPerfectum(input, verbType) {
       break;
     case 12:
       output = input[0] + input[1] + "e" + input[2][0] + input[2];
-      break;
-    case "nebber":
-      output = "nebber";
-      break;
-    case "new":
-      output = "new";
-      break;
-    case "amar":
-      output = "amar";
-      break;
-    case "meśat":
-      output = "meśat";
-      break;
-    case "metew":
-      output = "metew";
-      break;
-    case "menged":
-      output = "menged";
-      break;
-    case "memTat":
-      output = "memTat";
-      break;
-    case "meśenat":
-      output = "meśenat";
       break;
   }
 
@@ -441,30 +416,6 @@ function toJussivus(input, verbType) {
     case 11:
       output = input[0] + input[1] + input[2][0] + "y" + input[3];
       break;
-    case "nebber":
-      output = "nebber";
-      break;
-    case "new":
-      output = "new";
-      break;
-    case "amar":
-      output = "amar";
-      break;
-    case "meśat":
-      output = "meśat";
-      break;
-    case "metew":
-      output = "metew";
-      break;
-    case "menged":
-      output = "menged";
-      break;
-    case "memTat":
-      output = "memTat";
-      break;
-    case "meśenat":
-      output = "meśenat";
-      break;
   }
 
   return output;
@@ -508,30 +459,8 @@ function toGerundivum(input, verbType) {
     case 12:
       output = input[0] + input[1] + input[2][0] + "y" + input[3] + "o";
       break;
-    case "nebber":
-      output = "nebber";
-      break;
-    case "new":
-      output = "new";
-      break;
-    case "amar":
-      output = "amar";
-      break;
-    case "meśat":
-      output = "meśat";
-      break;
-    case "metew":
-      output = "metew";
-      break;
-    case "menged":
-      output = "menged";
-      break;
-    case "memTat":
-      output = "memTat";
-      break;
-    case "meśenat":
-      output = "meśenat";
-      break;
+    case "malet":
+      output = "byll"
   }
 
   return output;
@@ -590,29 +519,8 @@ function toContingent(input, verbType) {
     case 12:
       output = input[0] + input[1][0] + "e" + input[2][0] + input[2] + "llew";
       break;
-    case "nebber":
-      output = "nebber";
-      break;
-    case "new":
-      output = "new";
-      break;
-    case "amar":
-      output = "amar";
-      break;
-    case "meśat":
-      output = "meśat";
-      break;
-    case "metew":
-      output = "metew";
-      break;
-    case "menged":
-      output = "menged";
-      break;
-    case "memTat":
-      output = "memTat";
-      break;
-    case "meśenat":
-      output = "meśenat";
+    case "malet":
+      output = "l";
       break;
   }
 
@@ -642,11 +550,6 @@ function conjugateAllPersons(p, j, g, c) {
 
   C = C.split("allew")[0];
 
-  console.log(p);
-  console.log(j);
-  console.log(g);
-  console.log(c);
-
   // Perfectum
   perfS1.innerHTML = P + "hu";
   perfS2M.innerHTML = P + "h";
@@ -675,15 +578,29 @@ function conjugateAllPersons(p, j, g, c) {
   contP2.innerHTML = "ty" + C + "alaćhu";
   contP3.innerHTML = "jy" + C + "allu";
   // Imperativus
-  impS2M.innerHTML = J;
-  impS2F.innerHTML = J + "i"; // Jak na końcu jest "a" np w melekkat - lekka, to powinno być w imp lekki?
-  impP2.innerHTML = J + "u"; // A tu lekku? czy lekka i lekka?
+  if ( verbTypeGlobal !== 'memTat' ) {
+    impS2M.innerHTML = J;
+    impS2F.innerHTML = J + "i"; // Jak na końcu jest "a" np w melekkat - lekka, to powinno być w imp lekki?
+    impP2.innerHTML = J + "u"; // A tu lekku? czy lekka i lekka?
+  } else {
+    impS2M.innerHTML = 'meTna';
+    impS2F.innerHTML = 'meTni';
+    impP2.innerHTML = 'meTnu';
+  }
   // Jussivus
-  jusS1.innerHTML = "jy" + J;
-  jusS3M.innerHTML = "ty" + J;
-  jusS3F.innerHTML = "ly" + J;
-  jusP1.innerHTML = "jy" + J + "u";
-  jusP2.innerHTML = "ynny" + J;
+  if ( verbTypeGlobal !== 'malet' ) {
+    jusS1.innerHTML = "jy" + J;
+    jusS3M.innerHTML = "ty" + J;
+    jusS3F.innerHTML = "ly" + J;
+    jusP1.innerHTML = "jy" + J + "u";
+    jusP2.innerHTML = "ynny" + J;
+  } else {
+    jusS1.innerHTML = "jyl";
+    jusS3M.innerHTML = "tyl";
+    jusS3F.innerHTML = "lyl";
+    jusP1.innerHTML = "jylu";
+    jusP2.innerHTML = "ynnyl";
+  }
 }
 
 /* +++++ --- +++++ */
@@ -730,92 +647,19 @@ for (let i = 0; i < prefixes.length; i++) {
   });
 }
 
-conjugate("melekkat");
+conjugate("malet");
 
 /*
 
-መሸሽ - rzeczywiście powinno być meśeśet, ale nie jest
-መሽናት - coś o tym, że nie wiadomo do jakiej klasy należy. nie wiem ta książka jest tak idiotycznie napisana że nic nie można z niej wyciągnąć
-መምጣት - ma nieregularny imperativus
-መነገድ i "hnt'" - nie wiadomo, ale chyba się inaczej odmieniają. i co to ma być ten drugi czasownik? znaczy 'construst'. może sprawdzić w Kane'e. W tigrynia to ሃነጸ.
-አል
-ተወ
-ሻ
-አማረ - cztery bardzo oczywiste i nieregularne! odmienić oddzielnie.
-ነው
-አለ - alle
-ነበር - trzy które faktycznie odstają od reszty
-ኖረ
-ሆነ - z nimi też coś jest nie tak
+malet
+ale/ylal/bylo/bel/malet
 
-Zatem czasowniki które trzeba złapać, odmienić i nie dać przejść przez klasyfikację i inne procedury to:
-መሸሽ, መሽናት, መምጣት, መነገድ, ( "hnt'" / ሃነጸ )
-አል, ተወ, ሻ, አማረ, ነው, አለ, ነበር, ኖረ, ሆነ <- jakie bezokoliczniki od tych?
+*amare, tew, śa
+sprawdzić odmianę u Leslaua
 
-meśeś
-p: śeśśe
-j: śyś
-g: śeśto
-c: jyśeś
+*meśen
+śena/śene/śiene
 
-meśenat
-p:
-j:
-g:
-c:
-
-memTat
-p: meTTa
-j: mTa
-g: meTyto
-c: jymeTa
-
-menged
-p:
-j:
-g:
-c:
-
-???
-p:
-j:
-g:
-c:
-
-meal
-p:
-j:
-g:
-c:
-
-metew
-p: tewe
-j: tyw
-g: tywo
-c: jytew
-
-meśat
-p:
-j:
-g:
-c:
-
-mamar
-p:
-j:
-g:
-c:
-
-new
-p:
-j:
-g:
-c:
-
-nebber
-p:
-j:
-g:
-c:
+*meśeś
 
 */
