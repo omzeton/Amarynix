@@ -265,18 +265,22 @@ function identifyType(rads) {
     case "mot":
       return 7;
     case "amar":
+      verbTypeGlobal = "mamar";
       return "mamar";
     case "śat":
+      verbTypeGlobal = "meśat";
       return "meśat";
     case "tew":
+        verbTypeGlobal = "metew";
       return "metew";
     case "mTat":
-      verbTypeGlobal = 'memTat';
+      verbTypeGlobal = "memTat";
       return 5;
-    case 'alet':
-      verbTypeGlobal = 'malet';
+    case "alet":
+      verbTypeGlobal = "malet";
       return 3;
     case "śenat":
+        verbTypeGlobal = "meśenat";
       return "meśenat";
   }
 
@@ -369,6 +373,15 @@ function toPerfectum(input, verbType) {
     case 12:
       output = input[0] + input[1] + "e" + input[2][0] + input[2];
       break;
+    case "metew":
+      output = "teww";
+      break;
+    case "mamar":
+      output = "amaree";
+      break;
+    case "meśat":
+      output = "śa";
+      break;
   }
 
   return output;
@@ -416,6 +429,15 @@ function toJussivus(input, verbType) {
     case 11:
       output = input[0] + input[1] + input[2][0] + "y" + input[3];
       break;
+    case "metew":
+      output = "tew";
+      break;
+    case "mamar":
+      output = "amar";
+      break;
+    case "meśat":
+      output = "śa";
+      break;
   }
 
   return output;
@@ -460,7 +482,16 @@ function toGerundivum(input, verbType) {
       output = input[0] + input[1] + input[2][0] + "y" + input[3] + "o";
       break;
     case "malet":
-      output = "byll"
+      output = "byll";
+    case "metew":
+      output = "tytt";
+      break;
+    case "mamar":
+      output = "amrr";
+      break;
+    case "meśat":
+      output = "śa";
+      break;
   }
 
   return output;
@@ -522,6 +553,15 @@ function toContingent(input, verbType) {
     case "malet":
       output = "l";
       break;
+    case "metew":
+      output = "tew";
+      break;
+    case "mamar":
+      output = "amar";
+      break;
+    case "meśat":
+      output = "śa";
+      break;
   }
 
   return output;
@@ -578,28 +618,40 @@ function conjugateAllPersons(p, j, g, c) {
   contP2.innerHTML = "ty" + C + "alaćhu";
   contP3.innerHTML = "jy" + C + "allu";
   // Imperativus
-  if ( verbTypeGlobal !== 'memTat' ) {
+  if (verbTypeGlobal !== "memTat") {
     impS2M.innerHTML = J;
     impS2F.innerHTML = J + "i"; // Jak na końcu jest "a" np w melekkat - lekka, to powinno być w imp lekki?
     impP2.innerHTML = J + "u"; // A tu lekku? czy lekka i lekka?
   } else {
-    impS2M.innerHTML = 'meTna';
-    impS2F.innerHTML = 'meTni';
-    impP2.innerHTML = 'meTnu';
+    impS2M.innerHTML = "meTna";
+    impS2F.innerHTML = "meTni";
+    impP2.innerHTML = "meTnu";
   }
+
+  console.log(verbTypeGlobal);
+
   // Jussivus
-  if ( verbTypeGlobal !== 'malet' ) {
-    jusS1.innerHTML = "jy" + J;
-    jusS3M.innerHTML = "ty" + J;
-    jusS3F.innerHTML = "ly" + J;
-    jusP1.innerHTML = "jy" + J + "u";
-    jusP2.innerHTML = "ynny" + J;
-  } else {
+  if (verbTypeGlobal === "malet") {
     jusS1.innerHTML = "jyl";
     jusS3M.innerHTML = "tyl";
     jusS3F.innerHTML = "lyl";
     jusP1.innerHTML = "jylu";
     jusP2.innerHTML = "ynnyl";
+  }
+  if (verbTypeGlobal === "malet") {
+    gerS1.innerHTML = "tyććie";
+    impS2F.innerHTML = "tey";
+  } else if (verbTypeGlobal === "meśat") {
+    perfS3M.innerHTML = "śa";
+    gerS3M.innerHTML = "śto"
+    gerS3F.innerHTML = "śta"
+    jusS3M.innerHTML = "jyśa"
+  } else {
+    jusS1.innerHTML = "jy" + J;
+    jusS3M.innerHTML = "ty" + J;
+    jusS3F.innerHTML = "ly" + J;
+    jusP1.innerHTML = "jy" + J + "u";
+    jusP2.innerHTML = "ynny" + J;
   }
 }
 
@@ -647,19 +699,37 @@ for (let i = 0; i < prefixes.length; i++) {
   });
 }
 
-conjugate("malet");
+conjugate("mefelleg");
 
 /*
 
 malet
 ale/ylal/bylo/bel/malet
 
-*amare, tew, śa
-sprawdzić odmianę u Leslaua
-
 *meśen
 śena/śene/śiene
 
 *meśeś
+
+amare
+p: amare
+g: amro
+c: yamr
+i: mer
+j: ymer
+
+tewe
+p: tewe
+g: tyto
+c: jytewal
+i: tew
+j: jytew
+
+meśat
+p: śa
+g: śyto
+c: jyśal
+i: śa
+j: jyśa
 
 */
