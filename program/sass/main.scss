@@ -1,60 +1,204 @@
-$w : #f9f9f9;
+//----------------------
+// Colors
+$b: #000;
+$w: #fff;
 
+//----------------------
+// Imports
+@import "./mixins.scss";
+
+//----------------------
+// Styles
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
 body {
-	background-color: $w;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: $w;
+  overflow-x:hidden;
 }
 
-h1 {
-	font-size: 1.5em;
+.start-page {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: 18rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  // background-color:blue;
+  h2 {
+    text-align: center;
+    font-weight: 900;
+    font-size: 2rem;
+    white-space: nowrap;
+  }
+  h3 {
+    display: relative;
+    font-weight: 100;
+    font-size: 1rem;
+    text-align: center;
+    margin-top: -1em;
+    &:after {
+      content: "";
+      position: absolute;
+      margin-top: 2.4em;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 0.1em;
+      width: 40%;
+      background-color: $b;
+    }
+  }
+  .form {
+    margin-top: 2rem;
+    input {
+      background-color: $b;
+      padding: 0.5rem;
+      border: none;
+      color: $w;
+      border-radius: 0.2em;
+    }
+    .error-msg {
+      position: absolute;
+      margin-top: 1em;
+      width: 100%;
+      height: 2em;
+      background-color: $w;
+      border: 1px solid $b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      p {
+        line-height: 0;
+        color: $b;
+      }
+    }
+  }
 }
 
-h2 {
-	font-size: 1.2em;
-	text-decoration: underline;
-	padding-top: 0.5em;
+.gemination-blocks-area {
+  display: none;
+  padding:1em;
+  position: relative;
+  width: 100%;
+  height: 10em;
+  // background-color:green;
+  #blocks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .block {
+      display: inline-block;
+      font-size: 2em;
+      color: $w;
+      width: 2em;
+      height: 100%;
+      text-align: center;
+      margin-right: 0.25em;
+      background-color: $b;
+      border-radius: 0.2em;
+      cursor: pointer;
+    }
+    .active {
+      background-color: red;
+    }
+  }
+  p {
+    text-align: center;
+  }
+  #gemination-submit {
+    position: relative;
+    left:50%;
+    transform:translateX(-50%);
+    width: 12em;
+    margin-top:1em;
+    background-color: $w;
+    padding: 0.5rem;
+    color: $b;
+    border: 1px solid $b;
+    border-radius: 0.2em;
+    &:active {
+      background-color:$b;
+      color:$w;
+    }
+  }
 }
 
-.r-table {
-	position: relative;
-	display: grid;
-	width: 13em;
-	height: 5em;
-	grid-template-areas: 'l l l l l l'
-						 'n n n n n n';
-	background-color: #f2f2f2;
-}
-.r-table div {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.output-page {
+  display:none;
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top:2em;
+  .output__main {
+    width:20em;
+    margin:0 auto;
+    #output-verb {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    .output-tense-container p {
+      padding: 1em 0;
+    }
+    .output-tense {
+      font-weight: bold;
+    }
+  }
+  .output-full-conjugation {
+    margin:4em 0;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    position: relative;
+    td, th {
+      border: 1px solid #6e6e6e;
+      text-align: left;
+      padding:8px;
+    }
+    tr:nth-child(even) {
+      background-color: #d8d8d8;
+    }
+  }
 }
 
-#output-verb {
-	font-size: 2em;
+.copyright {
+  position:fixed;
+  bottom: 0.5em;
+  right: 1em;
+  line-height: 0em;
 }
 
-.output-tense-container p {
-	padding:1em 0;
+//----------------------
+// Media Queries
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
 }
 
-.output-tense {
-	font-weight: bold;
-	font-size: 2em;
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
 }
 
-.output-full-conjugation {
-	display:grid;
-	grid-template-columns: repeat(6, auto);
-	grid-template-rows: repeat(9, 3rem);
-	margin:1em 2em;
-	& > div {
-		border:1px solid #000;
-		padding:0.3em;
-		&:nth-child(odd) {
-			background-color:#dddddd;
-		}
-		p {
-			margin-top:0.7em;
-		}
-	}
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
 }
+
+/* Large desktop */
+@media (min-width: 1200px) {
+}
+
+//----------------------
