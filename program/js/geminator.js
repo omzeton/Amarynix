@@ -1331,6 +1331,7 @@ function conjugateAllPersons(p, j, g, c) {
     jusP1.innerHTML = "jylu";
     jusP2.innerHTML = "ynnyl";
   }
+  console.log(jusP2.innerHTML);
 }
 
 function conjugate(newInput) {

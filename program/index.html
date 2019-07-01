@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Start making things</title>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
+    <title>First Amharic verb conjugator on the web!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="assets/favicon.png" />
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
@@ -26,7 +26,6 @@
             id="input"
             onkeypress="return AmharicPhoneticKeyPress(event,this);"
           />
-          <!-- onkeypress="return AmharicPhoneticKeyPress(event,this);" -->
           <input type="submit" value="conjugate" id="submit" />
           <div class="error-msg" id="error">
             <p>Please provide a valid input.</p>
@@ -74,12 +73,12 @@
             <th class="6-1">Jussivus</th>
           </tr>
           <tr>
-              <td class="1-2"><p>1 s.</p></td>
-              <td class="2-2"><p>x</p></td>
-              <td class="3-2"><p>x</p></td>
-              <td class="4-2"><p>x</p></td>
-              <td class="5-2"></td>
-              <td class="6-2"><p>x</p></td>
+            <td class="1-2"><p>1 s.</p></td>
+            <td class="2-2"><p>x</p></td>
+            <td class="3-2"><p>x</p></td>
+            <td class="4-2"><p>x</p></td>
+            <td class="5-2"></td>
+            <td class="6-2"><p>x</p></td>
           </tr>
           <tr>
             <td class="1-3"><p>2 s.m</p></td>
@@ -137,12 +136,21 @@
             <td class="5-9"></td>
             <td class="6-9"><p>x</p></td>
           </tr>
-      </table>
-    </div>
+        </table>
+      </div>
     </div>
 
-    <p class="copyright">&copy; 2019</p>
-
+    <footer>
+      <div class="Footer--Left">
+        <a href="https://github.com/omzeton/Amarynix">
+          <img src="/assets/github.svg" alt="Github"
+        /></a>
+      </div>
+      <div class="Footer--Center"></div>
+      <div class="Footer--Right">
+        <p class="copyright">&copy; 2019</p>
+      </div>
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TimelineMax.min.js"></script>
     <script src="js/amInput.js"></script>
