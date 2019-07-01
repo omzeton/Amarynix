@@ -1,14 +1,8 @@
-//----------------------
-// Colors
+@import "./mixins.scss";
+
 $b: #000;
 $w: #fff;
 
-//----------------------
-// Imports
-@import "./mixins.scss";
-
-//----------------------
-// Styles
 html {
   box-sizing: border-box;
 }
@@ -37,13 +31,12 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  // background-color:blue;
   h2 {
     text-align: center;
     font-weight: 900;
     font-size: 2rem;
     white-space: nowrap;
-    color:$b;
+    color: $b;
   }
   h3 {
     display: relative;
@@ -51,7 +44,7 @@ body {
     font-size: 1rem;
     text-align: center;
     margin-top: -1em;
-    color:$b;
+    color: $b;
     &:after {
       content: "";
       position: absolute;
@@ -71,6 +64,13 @@ body {
       border: none;
       color: $w;
       border-radius: 0.2em;
+      border:1px solid $b;
+      &:hover,
+      &:active,
+      &:focus {
+        background-color:$w;
+        color:$b;
+      }
     }
     .error-msg {
       position: absolute;
@@ -120,7 +120,7 @@ body {
   }
   p {
     text-align: center;
-    color:$b;
+    color: $b;
   }
   #gemination-submit {
     position: relative;
@@ -133,7 +133,8 @@ body {
     color: $b;
     border: 1px solid $b;
     border-radius: 0.2em;
-    &:active {
+    &:active,
+    &:hover  {
       background-color: $b;
       color: $w;
     }
@@ -146,37 +147,58 @@ body {
   width: 100%;
   height: auto;
   margin-top: 2em;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   .output__main {
     width: 20em;
     margin: 0 auto;
-    color:$b;
+    color: $b;
     #output-verb {
       font-size: 3rem;
       font-weight: bold;
     }
     .output-tense-container p {
       padding: 1em 0;
-      color:$b;
+      color: $b;
     }
     .output-tense {
       font-weight: bold;
     }
   }
   .output-full-conjugation {
+    position: relative;
     margin: 4em 0;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    flex-direction: column;
     td,
     th {
       border: 1px solid #6e6e6e;
       text-align: left;
       padding: 8px;
-      color:$b;
+      color: $b;
     }
     tr:nth-child(even) {
       background-color: #e2e2e2;
+    }
+    .alpha__switch {
+      margin-top: 1em;
+      position: relative;
+      width: 12em;
+      background-color: $w;
+      padding: 0.5rem;
+      color: $b;
+      border: 1px solid $b;
+      border-radius: 0.2em;
+      z-index: 9999;
+      &:active,
+      &:hover {
+        background-color: $b;
+        color: $w;
+      }
     }
   }
 }
@@ -188,7 +210,7 @@ footer {
   height: 3em;
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 3em 1fr 4em;
+  grid-template-columns: 3em 1fr 5em;
   .Footer--Left {
     display: flex;
     align-items: center;
@@ -205,28 +227,7 @@ footer {
     align-items: center;
     justify-content: center;
     p {
-      font-size: .9rem;
+      font-size: 0.9rem;
     }
   }
 }
-
-//----------------------
-// Media Queries
-
-/* Landscape phones and down */
-@media (max-width: 480px) {
-}
-
-/* Landscape phone to portrait tablet */
-@media (max-width: 767px) {
-}
-
-/* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {
-}
-
-/* Large desktop */
-@media (min-width: 1200px) {
-}
-
-//----------------------
