@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
 
-import { ConjugationTable } from "./ConjugationTable";
-
+import { ConjugationTable } from "../components/ConjugationTable";
 import { VerbConjugation, GeminationInfo } from "@/types";
 import conjugateVerb from "@/helpers/conjugateVerb";
-import { initConjugationState } from "@/helpers";
+import { initConjugationState, toggleAlphabets } from "@/helpers";
 
 export const Conjugation = ({ geminationInfo }: { geminationInfo: Map<number, GeminationInfo> }) => {
     const [conjugationData, setConjugationData] = useState<VerbConjugation>(initConjugationState);
+
     useEffect(() => {
-        const output = conjugateVerb(geminationInfo);
-        setConjugationData(output);
-        console.log(output);
+        setConjugationData(conjugateVerb(geminationInfo));
     }, [geminationInfo]);
+
+    const switchAlphabets = () => {
+        setConjugationData(toggleAlphabets({ dir: "AM", prevState: conjugationData }));
+    };
 
     return (
         <div className='conjugation'>
-            <ConjugationTable conjugationData={conjugationData} />
+            <ConjugationTable conjugationData={conjugationData} toggleAlphabets={switchAlphabets} />
         </div>
     );
 };

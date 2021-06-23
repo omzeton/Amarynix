@@ -1,5 +1,6 @@
 import { conjugateAllPersons } from "./index";
-import { amToLat, inputToRad, identifyType, toGerundivum, toPerfectum, toContingent, toJussivus } from ".";
+import { inputToRad, identifyType, toGerundivum, toPerfectum, toContingent, toJussivus } from ".";
+import { amToLat } from "./amToLat";
 
 import { GeminationInfo, VerbConjugation } from "@/types";
 

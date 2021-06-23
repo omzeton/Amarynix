@@ -19,11 +19,7 @@ export interface ConjugationTable {
 }
 
 export interface VerbConjugation {
-    perfectum: ConjugationTable;
-    gerundivum: ConjugationTable;
-    contingent: ConjugationTable;
-    imperativus: ConjugationTable;
-    jussivus: ConjugationTable;
+    [key: string]: ConjugationTable;
 }
 
 export interface ConjugationPayload {
