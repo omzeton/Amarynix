@@ -23,9 +23,14 @@
         top: 50%;
         transform: translateY(-50%);
         right: 2em;
-        line-height: 0;
         display: inline-block;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         color: $black;
+        width: 200px;
+        text-align: right;
+        @media screen and (min-width: $mobile) {
+            font-size: 0.9rem;
+            width: auto;
+        }
     }
 }
