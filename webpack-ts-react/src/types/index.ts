@@ -19,5 +19,10 @@ export type Action = {
 };
 
 export interface VerbSubmitHandler {
-    submitVerb: Dispatch<SetStateAction<string>>;
+    submitVerb: (value: string) => void;
+}
+
+export interface GeminationInfo {
+    el: string;
+    geminated: boolean;
 }
