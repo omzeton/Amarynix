@@ -39,7 +39,7 @@ export const Layout: React.FC = () => {
         <main className='main-wrapper'>
             <IntroductionText submitVerb={registerVerb} />
             {verb && <Gemination geminateLetter={setGemination} geminationInfo={geminationInfo} conjugateVerb={conjugateVerb} />}
-            {conjugationVisible && <Conjugation />}
+            {conjugationVisible && <Conjugation geminationInfo={geminationInfo} />}
         </main>
     );
 };
