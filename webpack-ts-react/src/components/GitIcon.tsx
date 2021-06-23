@@ -2,7 +2,7 @@ import React from "react";
 
 export const GitIcon: React.FC = () => {
     return (
-        <div className='footer__git'>
+        <a href='https://github.com/omzeton/Amarynix' className='footer__git'>
             <svg width='1024' height='1024' viewBox='0 0 1024 1024' fill='none' xmlns='http://www.w3.org/2000/svg' className='footer__svg'>
                 <path
                     fillRule='evenodd'
@@ -12,6 +12,6 @@ export const GitIcon: React.FC = () => {
                     fill='currentColor'
                 />
             </svg>
-        </div>
+        </a>
     );
 };
