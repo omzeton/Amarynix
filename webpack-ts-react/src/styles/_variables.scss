@@ -1,5 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900&display=swap");
+@font-face {
+    font-family: "Abyssinica";
+    font-style: normal;
+    font-weight: light;
+    font-display: swap;
+    src: url("@/assets/abyssinica.woff");
+}
 
 $white: #fbfbfb;
 $black: #2e3235;

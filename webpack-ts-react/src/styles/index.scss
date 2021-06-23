@@ -1,11 +1,15 @@
+@import "legacy"; // TODO: Delete!
+
 @import "variables";
-@import "legacy";
 @import "footer";
+@import "layout";
+@import "splash-text";
 
 *,
 *:before,
 *:after {
     box-sizing: inherit;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 body {
