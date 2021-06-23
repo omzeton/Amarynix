@@ -1,0 +1,38 @@
+{
+    "name": "nsl-notes",
+    "main": "src/index.ts",
+    "scripts": {
+        "client": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
+        "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
+        "start": "npm run client"
+    },
+    "dependencies": {
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+    },
+    "devDependencies": {
+        "@types/react": "^17.0.11",
+        "@types/react-dom": "^17.0.7",
+        "clean-webpack-plugin": "^4.0.0-alpha.0",
+        "copy-webpack-plugin": "^9.0.0",
+        "cross-env": "^7.0.3",
+        "css-loader": "^5.2.6",
+        "css-minimizer-webpack-plugin": "^3.0.1",
+        "html-webpack-plugin": "^5.3.1",
+        "mini-css-extract-plugin": "^1.6.0",
+        "node-sass": "^6.0.0",
+        "path-browserify": "^1.0.1",
+        "postcss": "^8.3.4",
+        "postcss-loader": "^6.1.0",
+        "postcss-preset-env": "^6.7.0",
+        "sass-loader": "^12.1.0",
+        "stream-browserify": "^3.0.0",
+        "style-loader": "^2.0.0",
+        "ts-loader": "^9.2.3",
+        "typescript": "^4.3.2",
+        "webpack": "^5.39.0",
+        "webpack-cli": "^4.7.2",
+        "webpack-dev-server": "^3.11.2",
+        "webpack-merge": "^5.8.0"
+    }
+}
