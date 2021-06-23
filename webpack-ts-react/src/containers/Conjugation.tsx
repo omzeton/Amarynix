@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import { ConjugationSummary } from "./ConjugationSummary";
 import { ConjugationTable } from "./ConjugationTable";
 
 import { VerbConjugation, GeminationInfo } from "@/types";
