@@ -1081,3 +1081,56 @@ export const conjugateAllPersons = ({ perfectum, gerundivum, contingent, jussivu
 
     return conjugationTable;
 };
+
+export const initConjugationState: VerbConjugation = {
+    perfectum: {
+        firstSingular: "",
+        secondMasculineSingular: "",
+        secondFeminineSingular: "",
+        thirdMasculineSingular: "",
+        thirdFeminineSingular: "",
+        firstPlural: "",
+        secondPlural: "",
+        thirdPlural: "",
+    },
+    gerundivum: {
+        firstSingular: "",
+        secondMasculineSingular: "",
+        secondFeminineSingular: "",
+        thirdMasculineSingular: "",
+        thirdFeminineSingular: "",
+        firstPlural: "",
+        secondPlural: "",
+        thirdPlural: "",
+    },
+    contingent: {
+        firstSingular: "",
+        secondMasculineSingular: "",
+        secondFeminineSingular: "",
+        thirdMasculineSingular: "",
+        thirdFeminineSingular: "",
+        firstPlural: "",
+        secondPlural: "",
+        thirdPlural: "",
+    },
+    jussivus: {
+        firstSingular: "",
+        secondMasculineSingular: "",
+        secondFeminineSingular: "",
+        thirdMasculineSingular: "",
+        thirdFeminineSingular: "",
+        firstPlural: "",
+        secondPlural: "",
+        thirdPlural: "",
+    },
+    imperativus: {
+        firstSingular: "",
+        secondMasculineSingular: "",
+        secondFeminineSingular: "",
+        thirdMasculineSingular: "",
+        thirdFeminineSingular: "",
+        firstPlural: "",
+        secondPlural: "",
+        thirdPlural: "",
+    },
+};
