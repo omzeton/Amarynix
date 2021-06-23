@@ -1,13 +1,14 @@
-import React, { KeyboardEvent, Dispatch, SetStateAction, useRef, useState } from "react";
+import React, { KeyboardEvent, useRef, useState } from "react";
 import convertToAmharic from "@/helpers/convertToAmharic";
+import { VerbSubmitHandler } from "@/types";
 
-export const IntroductionText = ({ submitVerb }: { submitVerb?: Dispatch<SetStateAction<string>> }) => {
+export const IntroductionText: React.FC<VerbSubmitHandler> = ({ submitVerb }) => {
     const [inputValue, setInputValue] = useState("");
     const verbInput = useRef<HTMLInputElement>(null);
 
     const inputHandler = (event: KeyboardEvent<HTMLInputElement>) => {
         const textSelection = window.getSelection()?.toString();
-        if (event.code === "Enter" && submitVerb) {
+        if (event.code === "Enter") {
             submitVerb(inputValue);
         }
         if (event.code === "Backspace") {
@@ -50,7 +51,9 @@ export const IntroductionText = ({ submitVerb }: { submitVerb?: Dispatch<SetStat
                         type='text'
                         placeholder='ፈልግ'
                     />
-                    <button className='splash__button'>conjugate</button>
+                    <button onClick={() => submitVerb(inputValue)} className='splash__button'>
+                        conjugate
+                    </button>
                 </div>
                 <div className='splash__error'>
                     <p className='splash__error-message'>Please provide a valid input.</p>
