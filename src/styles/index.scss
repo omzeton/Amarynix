@@ -1,0 +1,19 @@
+@import "variables";
+@import "footer";
+@import "layout";
+@import "splash-text";
+@import "geminations";
+@import "conjugation";
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $white;
+}

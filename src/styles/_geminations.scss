@@ -1,0 +1,62 @@
+.gemination {
+    margin-top: 2em;
+    margin-bottom: 6em;
+    min-width: 30%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: $black;
+    padding: 0 1em;
+    text-align: center;
+    @media screen and (min-width: $mobile) {
+        padding: 0;
+        margin-top: 4em;
+        margin-bottom: 0;
+    }
+    &__blocks-wrapper {
+        display: flex;
+        align-items: centers;
+        margin-bottom: 1em;
+    }
+    &__block {
+        background-color: royalblue;
+        width: 3em;
+        height: 3em;
+        border-radius: 0.2em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 0.4em;
+        background-color: $black;
+        cursor: pointer;
+        transition: background-color 0.5 ease-in;
+        &--active {
+            background-color: $red;
+            .gemination__letter {
+                color: $black;
+            }
+        }
+    }
+    &__letter {
+        line-height: 0;
+        font-family: "Abyssinica";
+        font-size: 2rem;
+        color: $white;
+        user-select: none;
+    }
+    &__button {
+        box-sizing: border-box;
+        height: 100%;
+        width: 120px;
+        background-color: $white;
+        padding: 0.5rem;
+        border-radius: 0.2em;
+        border: 1px solid $black;
+        color: $black;
+        cursor: pointer;
+        &:hover {
+            background-color: $black;
+            color: $white;
+        }
+    }
+}
