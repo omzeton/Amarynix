@@ -7,13 +7,20 @@ import { initConjugationState, toggleAlphabets } from "@/helpers";
 
 export const Conjugation = ({ geminationInfo }: { geminationInfo: Map<number, GeminationInfo> }) => {
     const [conjugationData, setConjugationData] = useState<VerbConjugation>(initConjugationState);
+    const [isAmharic, toggleIsAmharic] = useState(false);
 
     useEffect(() => {
         setConjugationData(conjugateVerb(geminationInfo));
     }, [geminationInfo]);
 
     const switchAlphabets = () => {
-        setConjugationData(toggleAlphabets({ dir: "AM", prevState: conjugationData }));
+        if (!isAmharic) {
+            setConjugationData(toggleAlphabets({ dir: "AM", prevState: conjugationData }));
+            toggleIsAmharic(prevState => !prevState);
+        } else {
+            setConjugationData(conjugateVerb(geminationInfo));
+            toggleIsAmharic(prevState => !prevState);
+        }
     };
 
     return (

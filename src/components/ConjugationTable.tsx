@@ -185,6 +185,7 @@ export const ConjugationTable = ({ conjugationData, toggleAlphabets }: { conjuga
                 </div>
             </div>
             <button
+                className='conjugation__alpha-toggle'
                 onClick={() => {
                     toggleAlphabets();
                 }}
